@@ -1,4 +1,12 @@
-export type RouteKey = 'home' | 'comercial' | 'compliance' | 'documentos' | 'onboarding' | 'publico' | 'proximos'
+export type RouteKey =
+  | 'home'
+  | 'comercial'
+  | 'compliance'
+  | 'documentos'
+  | 'onboarding'
+  | 'publico'
+  | 'proximos'
+  | 'stress'
 
 export type NavItem = {
   key: RouteKey
@@ -51,6 +59,7 @@ export const navItems: NavItem[] = [
   { key: 'onboarding', label: 'Onboarding', kicker: 'Implantacao e CS' },
   { key: 'publico', label: 'Site Publico', kicker: 'Versao apresentavel e GTM' },
   { key: 'proximos', label: 'Proximos Passos', kicker: 'Execucao e contas-alvo' },
+  { key: 'stress', label: 'Stress Test', kicker: 'Produto, adoção e pricing' },
 ]
 
 export const stats = [
@@ -739,3 +748,161 @@ export const fourWeekMetrics = [
   '3 propostas enviadas.',
   '1 a 3 fechamentos pagos.',
 ]
+
+export const minimumViableLoop = [
+  [
+    '1. Consulta terminada',
+    'Usuario emite a prescriçao e envia foto ou digita medicacao, dose/frequencia e data de emissao.',
+  ],
+  [
+    '2. Duracao calculada',
+    'Prescripta estima a data de termino e pede apenas uma confirmacao ou ajuste.',
+  ],
+  [
+    '3. Alerta agendado',
+    'O sistema programa um alerta de expiracao, por exemplo 14 dias antes.',
+  ],
+  [
+    '4. Momento de acao',
+    'Quando o alerta chega, o usuario abre o caso e marca renovar, contatar, ignorar ou resolver.',
+  ],
+]
+
+export const compulsionMoment = {
+  trigger:
+    'Paciente manda mensagem dizendo que a medicacao termina amanha e pede renovacao imediata no meio de uma semana cheia.',
+  failure:
+    'Sem Prescripta, o medico precisa reconstruir o contexto em WhatsApp, agenda, PDFs antigos e memoria. Gasta tempo, perde certeza e responde sob pressao.',
+  resolution:
+    'Com Prescripta, a prescriçao ja esta em uma linha do tempo com data de emissao, termino estimado e status do ciclo. O medico abre uma tela e decide com contexto.',
+  emotion: 'Sai de interrupcao ansiosa para alivio, velocidade e confianca.',
+}
+
+export const migrationPressure: PanelData[] = [
+  {
+    title: 'O que quebra hoje',
+    intro: 'Memoria e chat nao sao uma camada temporal de prescricoes.',
+    bullets: [
+      'Paciente avisa tarde ou com informacao imprecisa.',
+      'Duracao fica escondida em calculo mental e improviso.',
+      'Nao existe visao futura do que esta para vencer.',
+    ],
+  },
+  {
+    title: 'O que força mudanca',
+    intro: 'A dor nao e organizacao abstrata. E reconstruir contexto toda vez que a urgencia ja chegou.',
+    bullets: [
+      'Interrupcoes repetidas em horario ruim.',
+      'Retrabalho para entender se a renovacao faz sentido.',
+      'Baixa previsibilidade sobre carga operacional futura.',
+    ],
+  },
+  {
+    title: 'Por que Prescripta vence',
+    intro: 'Ela muda o timing do trabalho.',
+    bullets: [
+      'WhatsApp informa depois que virou problema.',
+      'Prescripta informa antes que vire problema.',
+      'O medico para de reconstruir e passa a revisar.',
+    ],
+  },
+]
+
+export const failureModes = [
+  [
+    'Falha comportamental',
+    'Usuarios continuam em memoria e WhatsApp porque percebem Prescripta como trabalho duplicado.',
+    'Fazer a primeira captura caber em uma unica prescriçao e permitir entrada por assistente.',
+  ],
+  [
+    'Falha de confianca',
+    'Erro de extraçao ou duracao invalida destrói a credibilidade do sistema.',
+    'Nunca esconder incerteza; sempre pedir confirmacao do termino estimado.',
+  ],
+  [
+    'Falha de engajamento',
+    'Alertas viram ruido e sao ignorados.',
+    'Manter alertas escassos, contextuais e com uma unica acao clara.',
+  ],
+  [
+    'Fragilidade do sistema',
+    'Dados incompletos, regimenes ambiguos e uso parcial fazem o produto quebrar.',
+    'Aceitar registros parciais e degradar para fila de confirmacao em vez de bloquear.',
+  ],
+]
+
+export const messyRealityPanels: PanelData[] = [
+  {
+    title: 'Input imperfeito',
+    intro: 'Foto ruim ou dose ambigua nao podem matar o valor.',
+    bullets: [
+      'Se OCR falhar, pedir so os campos criticos.',
+      'Se duracao for incerta, pedir confirmacao direta da data de termino.',
+      'Se nada der certo, salvar como caso pendente de validacao.',
+    ],
+  },
+  {
+    title: 'Uso inconsistente',
+    intro: 'O produto ainda precisa servir mesmo quando a adesao e parcial.',
+    bullets: [
+      'Entregar valor no subconjunto rastreado.',
+      'Funcionar como lookup reativo em momentos de renovacao.',
+      'Nao exigir completude para gerar beneficio.',
+    ],
+  },
+  {
+    title: 'Regra de degradacao',
+    intro: 'So existe elegancia real quando o sistema continua util em 60% de completude.',
+    bullets: [
+      'Fila de casos com duracao indefinida.',
+      'Alertas apenas para itens confirmados.',
+      'Estado claro entre confiavel, pendente e incompleto.',
+    ],
+  },
+]
+
+export const positioningRewrite = {
+  sentence: 'Prescripta te diz quando a prescriçao de cada paciente vai acabar, antes de isso virar problema.',
+  paragraph:
+    'Psiquiatras nao perdem tempo porque prescricoes existem. Perdem tempo porque cada prescriçao tem um relogio escondido, e esse relogio hoje e gerido em memoria, chat e interrupcao. Prescripta calcula quando a prescriçao provavelmente termina, mostra isso como uma data concreta e avisa antes da renovacao virar urgencia.',
+  scenario:
+    'O paciente escreve dizendo que a medicacao acaba amanha. Em vez de vasculhar WhatsApp, PDF antigo e memoria, o medico abre Prescripta e ve quando a prescriçao foi emitida, quando deveria terminar e se a renovacao ja estava prevista.',
+}
+
+export const pricingStressPanels: PanelData[] = [
+  {
+    title: 'O que precisa ser verdade',
+    intro: 'Preco mensal so se sustenta se o produto virar rotina critica.',
+    bullets: [
+      'Ser checado antes de responder renovacoes.',
+      'Salvar repetidamente tempo mental, nao apenas ocasionalmente.',
+      'Operar ciclos suficientes por mes para parecer indispensavel.',
+    ],
+  },
+  {
+    title: 'O que quebra',
+    intro: 'Se o uso for esporadico, o preco vira friccao.',
+    bullets: [
+      'Lifetime barato treina o mercado errado.',
+      'Produto nice-to-have nao sustenta ticket de assinatura.',
+      'Uso eventual aumenta churn depois da novidade inicial.',
+    ],
+  },
+  {
+    title: 'Logica mais robusta',
+    intro: 'Cobrar por intent real e por implantacao onde houver mudanca operacional.',
+    bullets: [
+      'Plano solo mensal sem lifetime.',
+      'Clinica com recorrencia mais setup.',
+      'Piloto pago e descontavel na conversao.',
+    ],
+  },
+]
+
+export const finalVerdict = {
+  verdict: 'B | Produto viavel',
+  rationale:
+    'A ideia ja passou de prototipo inteligente porque tem dor real, wedge comportamental e caminho de retencao. Ainda nao e infraestrutura porque a rotina e a confianca ainda podem ser descartadas sem quebrar a operacao do usuario.',
+  leverage:
+    'O maior ganho vem de dominar um unico momento: quando a renovacao esta perto e o medico nao quer reconstruir manualmente a linha do tempo da prescriçao.',
+}

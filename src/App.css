@@ -508,6 +508,11 @@
   grid-template-columns: minmax(5rem, 0.5fr) minmax(10rem, 1fr) minmax(8rem, 0.7fr) minmax(0, 1.6fr) minmax(5rem, 0.5fr);
 }
 
+.failure-head,
+.failure-row {
+  grid-template-columns: minmax(9rem, 0.8fr) minmax(0, 1.4fr) minmax(0, 1.2fr);
+}
+
 .accounts-row a {
   color: var(--copper-dark);
   text-decoration: none;

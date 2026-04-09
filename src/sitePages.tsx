@@ -14,11 +14,19 @@ import {
   executiveMetrics,
   fourWeekMetrics,
   icpPanels,
+  finalVerdict,
+  failureModes,
+  messyRealityPanels,
+  migrationPressure,
+  minimumViableLoop,
   nextStepPriorities,
   objectionCards,
   offers,
   onboardingChecklists,
   onboardingTimeline,
+  positioningRewrite,
+  pricingStressPanels,
+  compulsionMoment,
   outreachCopy,
   outreachSequence,
   phasePanels,
@@ -51,6 +59,8 @@ export function renderRoute(
       return <PublicSitePage profile={profile} />
     case 'proximos':
       return <NextStepsPage profile={profile} />
+    case 'stress':
+      return <StressTestPage profile={profile} />
     default:
       return <HomePage profile={profile} />
   }
@@ -784,6 +794,141 @@ function NextStepsPage({ profile }: { profile: CompanyProfile }) {
       <section className="note-band">
         <p className="eyebrow">Decisao central</p>
         <h3>A Prescripta precisa provar venda, implantacao e retencao antes de escalar marketing.</h3>
+      </section>
+    </PageFrame>
+  )
+}
+
+function StressTestPage({ profile }: { profile: CompanyProfile }) {
+  return (
+    <PageFrame
+      kicker="Stress Test"
+      title="Produto, adoção e pricing sob pressao."
+      intro="Esta aba trata Prescripta como produto em uso real. A pergunta nao e se a ideia parece boa. E se ela sobrevive a comportamento humano, input ruim, urgencia clinica e resistencia a mudar rotina."
+    >
+      <section className="profile-banner">
+        <div>
+          <p className="eyebrow">Veredito direto</p>
+          <h3>{finalVerdict.verdict}</h3>
+          <p>{finalVerdict.rationale}</p>
+        </div>
+        <div className="profile-banner-meta">
+          <span>Produto central: {profile.coreOffer}</span>
+          <span>Alavanca: dominar o momento da renovacao</span>
+        </div>
+      </section>
+
+      <SectionTitle
+        eyebrow="Loop Minimo"
+        title="O menor loop que entrega valor em 24 horas."
+        text="Se Prescripta nao gerar valor a partir de uma unica prescriçao, com poucas acoes e sem mudar radicalmente o comportamento do medico, o desenho inicial esta errado."
+      />
+      <div className="timeline">
+        {minimumViableLoop.map((item, index) => (
+          <article key={item[0]} className="timeline-card">
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{item[0]}</h3>
+              <p>{item[1]}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="split-layout">
+        <article className="sheet">
+          <p className="eyebrow">Compulsion moment</p>
+          <h3>O momento em que o medico sente: eu preciso disso agora.</h3>
+          <ul>
+            <li>Trigger: {compulsionMoment.trigger}</li>
+            <li>Falha sem Prescripta: {compulsionMoment.failure}</li>
+            <li>Resolucao com Prescripta: {compulsionMoment.resolution}</li>
+            <li>Virada emocional: {compulsionMoment.emotion}</li>
+          </ul>
+        </article>
+        <article className="sheet">
+          <p className="eyebrow">Unit metric</p>
+          <h3>Ciclos de prescriçao acompanhados e resolvidos por prescritor por mes.</h3>
+          <p>
+            Usuarios e signups sao vaidade. O valor real aparece quando uma prescriçao entra, ganha data de termino,
+            gera alerta e chega a uma decisao ou resolucao. Sem isso, o produto e ornamental.
+          </p>
+        </article>
+      </div>
+
+      <SectionTitle
+        eyebrow="Migracao"
+        title="Por que alguem sairia de WhatsApp e memoria."
+        text="A tese so se sustenta se o produto vencer o custo de inercia. Nao basta parecer mais organizado; precisa mudar o timing do trabalho."
+      />
+      <div className="panel-grid three">
+        {migrationPressure.map((panel) => (
+          <InsightPanel key={panel.title} panel={panel} />
+        ))}
+      </div>
+
+      <SectionTitle
+        eyebrow="Falhas"
+        title="Se Prescripta falhar, vai falhar aqui."
+        text="O produto precisa ser desenhado contra habito, desconfiança, alerta ignorado e input sujo. Qualquer uma dessas frentes derruba retencao."
+      />
+      <div className="matrix">
+        <div className="matrix-row matrix-head failure-head">
+          <span>Tipo</span>
+          <span>Como falha</span>
+          <span>Mitigacao</span>
+        </div>
+        {failureModes.map((row) => (
+          <div className="matrix-row failure-row" key={row[0]}>
+            <span>{row[0]}</span>
+            <span>{row[1]}</span>
+            <span>{row[2]}</span>
+          </div>
+        ))}
+      </div>
+
+      <SectionTitle
+        eyebrow="Realidade Suja"
+        title="O produto precisa funcionar em uso parcial e input imperfeito."
+        text="Se Prescripta so for util quando os dados estiverem limpos e a adesao for alta, ela morre. O desenho certo degrada com elegancia."
+      />
+      <div className="panel-grid three">
+        {messyRealityPanels.map((panel) => (
+          <InsightPanel key={panel.title} panel={panel} />
+        ))}
+      </div>
+
+      <div className="split-layout">
+        <article className="sheet">
+          <p className="eyebrow">Posicionamento reescrito</p>
+          <h3>{positioningRewrite.sentence}</h3>
+          <p>{positioningRewrite.paragraph}</p>
+          <p>{positioningRewrite.scenario}</p>
+        </article>
+        <article className="sheet">
+          <p className="eyebrow">Tool vs infrastructure</p>
+          <h3>Ainda e mais ferramenta do que infraestrutura.</h3>
+          <p>
+            Ela so vira infraestrutura quando o medico ou a equipe passam a consultar Prescripta antes de responder
+            renovacoes, e quando parar de usar cria colapso operacional real, nao apenas perda de conveniencia.
+          </p>
+        </article>
+      </div>
+
+      <SectionTitle
+        eyebrow="Pricing"
+        title="O preço so fecha se o produto virar rotina critica."
+        text="Assinatura mensal nao se sustenta em uso ocasional. Se Prescripta for consultada so de vez em quando, vira nice-to-have e o preço quebra."
+      />
+      <div className="panel-grid three">
+        {pricingStressPanels.map((panel) => (
+          <InsightPanel key={panel.title} panel={panel} />
+        ))}
+      </div>
+
+      <section className="note-band">
+        <p className="eyebrow">Highest leverage</p>
+        <h3>{finalVerdict.leverage}</h3>
       </section>
     </PageFrame>
   )
