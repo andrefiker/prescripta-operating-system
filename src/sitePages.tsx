@@ -8,6 +8,7 @@ import {
   compliancePanels,
   crmFields,
   csMetrics,
+  deliverableAssets,
   documentInventory,
   documentTemplates,
   executiveMetrics,
@@ -301,6 +302,9 @@ function DocumentsPage(props: {
   setProfile: Dispatch<SetStateAction<CompanyProfile>>
 }) {
   const generatedDocuments = buildDocuments(props.profile)
+  const tier1Assets = deliverableAssets.filter((asset) => asset.tier === 'Tier 1')
+  const tier2Assets = deliverableAssets.filter((asset) => asset.tier === 'Tier 2')
+  const tier3Assets = deliverableAssets.filter((asset) => asset.tier === 'Tier 3')
 
   return (
     <PageFrame
@@ -477,6 +481,29 @@ function DocumentsPage(props: {
           </div>
         </article>
       </section>
+
+      <SectionTitle
+        eyebrow="Biblioteca"
+        title="Documentos finais baixaveis por tier."
+        text="Esses ativos ja existem como arquivos em PDF, DOCX, XLSX ou markdown dentro do proprio site. A camada acima continua servindo para personalizacao rapida da Prescripta; a biblioteca abaixo e a base concreta de entrega."
+      />
+      <div className="tier-stack">
+        <TierSection
+          title="Tier 1 | Nao vende sem isso"
+          intro="Pacote juridico e comercial minimo para enviar proposta, fechar contrato e sustentar a narrativa da empresa."
+          assets={tier1Assets}
+        />
+        <TierSection
+          title="Tier 2 | Onboarding dos primeiros clientes"
+          intro="Materiais de implantacao, treinamento, discovery e trust para as primeiras contas pagas."
+          assets={tier2Assets}
+        />
+        <TierSection
+          title="Tier 3 | Operacao de pipeline"
+          intro="Especificacoes de CRM, projecao de receita, playbook de objecoes e copy de homepage para rodar o comercial."
+          assets={tier3Assets}
+        />
+      </div>
 
       <div className="template-grid two">
         {documentTemplates.map((template) => (
@@ -736,4 +763,37 @@ function downloadText(fileName: string, content: string) {
   anchor.download = fileName
   anchor.click()
   URL.revokeObjectURL(url)
+}
+
+function TierSection(props: { title: string; intro: string; assets: typeof deliverableAssets }) {
+  return (
+    <section className="tier-section">
+      <header className="section-title">
+        <h3>{props.title}</h3>
+        <p>{props.intro}</p>
+      </header>
+      <div className="panel-grid two">
+        {props.assets.map((asset) => (
+          <article key={asset.title} className="deliverable-card">
+            <p className="eyebrow">{asset.tier}</p>
+            <h3>{asset.title}</h3>
+            <p>{asset.summary}</p>
+            <div className="document-actions">
+              {asset.files.map((file) => (
+                <a
+                  key={`${asset.title}-${file.label}`}
+                  className={file.label === 'PDF' || file.label === 'DOCX' || file.label === 'XLSX' ? 'primary-button' : 'ghost-button'}
+                  href={file.path}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {file.label}
+                </a>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
 }

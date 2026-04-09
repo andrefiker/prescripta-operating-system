@@ -1,0 +1,242 @@
+[
+  {
+    "key": "termos-de-uso",
+    "title": "Termos de Uso",
+    "tier": "Tier 1",
+    "summary": "Termos de uso completos para SaaS de saude.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/termos-de-uso.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/termos-de-uso.pdf"
+      }
+    ]
+  },
+  {
+    "key": "politica-de-privacidade",
+    "title": "Politica de Privacidade",
+    "tier": "Tier 1",
+    "summary": "Politica completa com LGPD e direitos do titular.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/politica-de-privacidade.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/politica-de-privacidade.pdf"
+      }
+    ]
+  },
+  {
+    "key": "dpa",
+    "title": "DPA",
+    "tier": "Tier 1",
+    "summary": "Anexo contratual de protecao de dados.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/dpa.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/dpa.pdf"
+      }
+    ]
+  },
+  {
+    "key": "politica-de-ia",
+    "title": "Politica de IA",
+    "tier": "Tier 1",
+    "summary": "Politica completa sobre automacao e supervisao humana.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/politica-de-ia.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/politica-de-ia.pdf"
+      }
+    ]
+  },
+  {
+    "key": "proposta-comercial",
+    "title": "Proposta comercial completa",
+    "tier": "Tier 1",
+    "summary": "Minuta completa com campos, escopo, pricing e cronograma.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/proposta-comercial.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/proposta-comercial.pdf"
+      },
+      {
+        "label": "DOCX",
+        "path": "/documents/proposta-comercial.docx"
+      }
+    ]
+  },
+  {
+    "key": "one-pager",
+    "title": "One-pager",
+    "tier": "Tier 1",
+    "summary": "Resumo executivo pronto para envio apos demo.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/one-pager.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/one-pager.pdf"
+      }
+    ]
+  },
+  {
+    "key": "contrato-saas-msa",
+    "title": "Contrato SaaS (MSA)",
+    "tier": "Tier 1",
+    "summary": "Contrato-base para assinatura com clientes.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/contrato-saas-msa.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/contrato-saas-msa.pdf"
+      }
+    ]
+  },
+  {
+    "key": "playbook-onboarding",
+    "title": "Playbook de onboarding",
+    "tier": "Tier 2",
+    "summary": "Checklist, treino por papel e go-live.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/playbook-onboarding.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/playbook-onboarding.pdf"
+      }
+    ]
+  },
+  {
+    "key": "discovery-call-script",
+    "title": "Discovery call script",
+    "tier": "Tier 2",
+    "summary": "Script completo com logica de qualificacao.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/discovery-call-script.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/discovery-call-script.pdf"
+      }
+    ]
+  },
+  {
+    "key": "welcome-email-sequence",
+    "title": "Welcome email sequence",
+    "tier": "Tier 2",
+    "summary": "Sequencia pronta do signup a ativacao.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/welcome-email-sequence.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/welcome-email-sequence.pdf"
+      }
+    ]
+  },
+  {
+    "key": "trust-center-content",
+    "title": "Trust center page content",
+    "tier": "Tier 2",
+    "summary": "Copy pronta das secoes do trust center.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/trust-center-content.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/trust-center-content.pdf"
+      }
+    ]
+  },
+  {
+    "key": "crm-setup-spec",
+    "title": "CRM setup spec",
+    "tier": "Tier 3",
+    "summary": "Campos, estagios, automacoes e relatorios.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/crm-setup-spec.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/crm-setup-spec.pdf"
+      }
+    ]
+  },
+  {
+    "key": "objection-handling-playbook",
+    "title": "Objection handling playbook",
+    "tier": "Tier 3",
+    "summary": "Scripts e talk tracks completos.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/objection-handling-playbook.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/objection-handling-playbook.pdf"
+      }
+    ]
+  },
+  {
+    "key": "homepage-copy",
+    "title": "Homepage copy",
+    "tier": "Tier 3",
+    "summary": "Copy completa da landing page.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/homepage-copy.md"
+      },
+      {
+        "label": "PDF",
+        "path": "/documents/homepage-copy.pdf"
+      }
+    ]
+  },
+  {
+    "key": "revenue-projection",
+    "title": "Revenue projection spreadsheet",
+    "tier": "Tier 3",
+    "summary": "Planilha de MRR por plano, churn e break-even.",
+    "files": [
+      {
+        "label": "XLSX",
+        "path": "/documents/revenue-projection.xlsx"
+      }
+    ]
+  }
+]

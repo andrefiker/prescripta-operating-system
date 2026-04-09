@@ -31,6 +31,18 @@ export type ClauseBlock = {
   text: string
 }
 
+export type DeliverableFile = {
+  label: string
+  path: string
+}
+
+export type DeliverableAsset = {
+  tier: 'Tier 1' | 'Tier 2' | 'Tier 3'
+  title: string
+  summary: string
+  files: DeliverableFile[]
+}
+
 export const navItems: NavItem[] = [
   { key: 'home', label: 'Overview', kicker: 'Tese e fase' },
   { key: 'comercial', label: 'Comercial', kicker: 'ICP, pricing e vendas' },
@@ -511,6 +523,142 @@ export const roadmap = [
       'Formalizar CS, scorecard e trust center publico.',
       'Abrir conteudo e parceria depois de validar o funil base.',
       'Preparar a camada enterprise e a trilha regulatoria de controlados.',
+    ],
+  },
+]
+
+export const deliverableAssets: DeliverableAsset[] = [
+  {
+    tier: 'Tier 1',
+    title: 'Termos de Uso',
+    summary: 'Termos completos para SaaS de saude, com limites de escopo, licenca, dados de saude e clausulas de uso.',
+    files: [
+      { label: 'PDF', path: './documents/termos-de-uso.pdf' },
+      { label: 'Markdown', path: './documents/termos-de-uso.md' },
+    ],
+  },
+  {
+    tier: 'Tier 1',
+    title: 'Politica de Privacidade',
+    summary: 'Politica LGPD com bases legais, papel de controlador e operador, retencao, direitos e contato.',
+    files: [
+      { label: 'PDF', path: './documents/politica-de-privacidade.pdf' },
+      { label: 'Markdown', path: './documents/politica-de-privacidade.md' },
+    ],
+  },
+  {
+    tier: 'Tier 1',
+    title: 'DPA',
+    summary: 'Anexo contratual de protecao de dados para acompanhar proposta e contrato.',
+    files: [
+      { label: 'PDF', path: './documents/dpa.pdf' },
+      { label: 'Markdown', path: './documents/dpa.md' },
+    ],
+  },
+  {
+    tier: 'Tier 1',
+    title: 'Politica de IA',
+    summary: 'Documento com supervisao humana, limites de automacao e proibicao de decisao clinica autonoma.',
+    files: [
+      { label: 'PDF', path: './documents/politica-de-ia.pdf' },
+      { label: 'Markdown', path: './documents/politica-de-ia.md' },
+    ],
+  },
+  {
+    tier: 'Tier 1',
+    title: 'Proposta comercial completa',
+    summary: 'Minuta com campos preenchiveis, escopo, pricing, cronograma e aceite.',
+    files: [
+      { label: 'PDF', path: './documents/proposta-comercial.pdf' },
+      { label: 'DOCX', path: './documents/proposta-comercial.docx' },
+      { label: 'Markdown', path: './documents/proposta-comercial.md' },
+    ],
+  },
+  {
+    tier: 'Tier 1',
+    title: 'One-pager',
+    summary: 'Resumo executivo final para envio apos demo, com dor, tese, limites e CTA.',
+    files: [
+      { label: 'PDF', path: './documents/one-pager.pdf' },
+      { label: 'Markdown', path: './documents/one-pager.md' },
+    ],
+  },
+  {
+    tier: 'Tier 1',
+    title: 'Contrato SaaS (MSA)',
+    summary: 'Contrato-base com objeto, vigencia, pagamento, dados, confidencialidade e rescisao.',
+    files: [
+      { label: 'PDF', path: './documents/contrato-saas-msa.pdf' },
+      { label: 'Markdown', path: './documents/contrato-saas-msa.md' },
+    ],
+  },
+  {
+    tier: 'Tier 2',
+    title: 'Playbook de onboarding',
+    summary: 'Operacao de handoff, kickoff, treinamento por papel, go-live e revisao de ativacao.',
+    files: [
+      { label: 'PDF', path: './documents/playbook-onboarding.pdf' },
+      { label: 'Markdown', path: './documents/playbook-onboarding.md' },
+    ],
+  },
+  {
+    tier: 'Tier 2',
+    title: 'Discovery call script',
+    summary: 'Fluxo real de discovery, logica de aprofundamento e criterios de qualificacao.',
+    files: [
+      { label: 'PDF', path: './documents/discovery-call-script.pdf' },
+      { label: 'Markdown', path: './documents/discovery-call-script.md' },
+    ],
+  },
+  {
+    tier: 'Tier 2',
+    title: 'Welcome email sequence',
+    summary: 'Sequencia do fechamento ate ativacao, pronta para automacao ou envio manual.',
+    files: [
+      { label: 'PDF', path: './documents/welcome-email-sequence.pdf' },
+      { label: 'Markdown', path: './documents/welcome-email-sequence.md' },
+    ],
+  },
+  {
+    tier: 'Tier 2',
+    title: 'Trust center page content',
+    summary: 'Copy pronta para privacidade, seguranca, IA, subprocessadores e incidentes.',
+    files: [
+      { label: 'PDF', path: './documents/trust-center-content.pdf' },
+      { label: 'Markdown', path: './documents/trust-center-content.md' },
+    ],
+  },
+  {
+    tier: 'Tier 3',
+    title: 'CRM setup spec',
+    summary: 'Ferramenta sugerida, campos obrigatorios, estagios, automacoes e relatorios.',
+    files: [
+      { label: 'PDF', path: './documents/crm-setup-spec.pdf' },
+      { label: 'Markdown', path: './documents/crm-setup-spec.md' },
+    ],
+  },
+  {
+    tier: 'Tier 3',
+    title: 'Revenue projection spreadsheet',
+    summary: 'Planilha de MRR com mix de planos, churn e contribuicao mensal.',
+    files: [{ label: 'XLSX', path: './documents/revenue-projection.xlsx' }],
+  },
+  {
+    tier: 'Tier 3',
+    title: 'Objection handling playbook',
+    summary: 'Scripts completos para objecoes comerciais recorrentes.',
+    files: [
+      { label: 'PDF', path: './documents/objection-handling-playbook.pdf' },
+      { label: 'Markdown', path: './documents/objection-handling-playbook.md' },
+    ],
+  },
+  {
+    tier: 'Tier 3',
+    title: 'Homepage copy',
+    summary: 'Texto da landing page, com headlines, secoes, CTA e estrutura de prova.',
+    files: [
+      { label: 'PDF', path: './documents/homepage-copy.pdf' },
+      { label: 'Markdown', path: './documents/homepage-copy.md' },
     ],
   },
 ]

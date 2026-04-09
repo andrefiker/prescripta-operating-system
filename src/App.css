@@ -348,6 +348,32 @@
   gap: 1rem;
 }
 
+.tier-stack {
+  display: grid;
+  gap: 2rem;
+}
+
+.tier-section {
+  display: grid;
+  gap: 1rem;
+}
+
+.deliverable-card {
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 1.3rem;
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: 0 18px 40px rgba(34, 26, 19, 0.06);
+}
+
+.deliverable-card h3 {
+  margin: 0.35rem 0 0.55rem;
+}
+
+.deliverable-card p {
+  color: var(--muted);
+}
+
 .generated-document {
   padding: 1rem;
   border-radius: 1.2rem;
@@ -387,9 +413,13 @@
 .primary-button {
   min-height: 2.75rem;
   padding: 0.7rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 999px;
   font: inherit;
   cursor: pointer;
+  text-decoration: none;
   transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 

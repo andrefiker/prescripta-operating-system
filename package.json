@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "generate:assets": "python scripts/generate_assets.py",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
