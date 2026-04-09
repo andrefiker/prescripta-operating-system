@@ -1,14 +1,14 @@
 :root {
-  --paper: #f3eee6;
-  --paper-deep: #e8dece;
-  --panel: #ece3d6;
+  --paper: #f2ece2;
+  --paper-deep: #e6dccd;
+  --panel: #ebe1d2;
   --ink: #171413;
-  --muted: #6f655f;
+  --muted: #645b55;
   --line: rgba(23, 20, 19, 0.12);
   --line-strong: rgba(23, 20, 19, 0.26);
-  --copper: #8f6336;
-  --copper-dark: #5c3d20;
-  --teal-deep: #243a41;
+  --copper: #b56b2c;
+  --copper-dark: #6e4420;
+  --teal-deep: #16242b;
 
   font-family:
     Inter,
@@ -39,7 +39,9 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0)), var(--paper);
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.35), transparent 36%),
+    linear-gradient(180deg, #f5efe6, #eee4d5 60%, #eadfce);
 }
 
 body::before {
@@ -52,7 +54,7 @@ body::before {
     linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 36px 36px;
   mask-image: radial-gradient(circle at center, black, transparent 72%);
-  opacity: 0.3;
+  opacity: 0.24;
 }
 
 a {
