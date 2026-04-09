@@ -374,6 +374,22 @@
   color: var(--muted);
 }
 
+.pdf-preview {
+  margin-top: 1rem;
+  padding: 0.6rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(91, 70, 54, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.pdf-preview iframe {
+  width: 100%;
+  min-height: 38rem;
+  border: 0;
+  border-radius: 0.7rem;
+  background: #f4ede3;
+}
+
 .generated-document {
   padding: 1rem;
   border-radius: 1.2rem;

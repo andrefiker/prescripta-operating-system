@@ -1,4 +1,4 @@
-import type { Dispatch, ReactNode, SetStateAction } from 'react'
+import { useState, type Dispatch, type ReactNode, type SetStateAction } from 'react'
 import { defaultCompanyProfile, type CompanyProfile } from './companyProfile'
 import { buildDocuments } from './documentGenerator'
 import {
@@ -766,6 +766,8 @@ function downloadText(fileName: string, content: string) {
 }
 
 function TierSection(props: { title: string; intro: string; assets: typeof deliverableAssets }) {
+  const [openPreview, setOpenPreview] = useState<string | null>(null)
+
   return (
     <section className="tier-section">
       <header className="section-title">
@@ -779,6 +781,15 @@ function TierSection(props: { title: string; intro: string; assets: typeof deliv
             <h3>{asset.title}</h3>
             <p>{asset.summary}</p>
             <div className="document-actions">
+              {asset.files.some((file) => file.label === 'PDF') ? (
+                <button
+                  type="button"
+                  className="ghost-button"
+                  onClick={() => setOpenPreview(openPreview === asset.title ? null : asset.title)}
+                >
+                  {openPreview === asset.title ? 'Fechar preview' : 'Preview PDF'}
+                </button>
+              ) : null}
               {asset.files.map((file) => (
                 <a
                   key={`${asset.title}-${file.label}`}
@@ -791,6 +802,14 @@ function TierSection(props: { title: string; intro: string; assets: typeof deliv
                 </a>
               ))}
             </div>
+            {openPreview === asset.title ? (
+              <div className="pdf-preview">
+                <iframe
+                  title={`Preview ${asset.title}`}
+                  src={asset.files.find((file) => file.label === 'PDF')?.path}
+                />
+              </div>
+            ) : null}
           </article>
         ))}
       </div>
