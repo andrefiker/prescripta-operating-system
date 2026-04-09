@@ -1,10 +1,12 @@
 import './App.css'
+import { useCompanyProfile } from './useCompanyProfile'
 import { useHashRoute } from './useHashRoute'
 import { navItems } from './siteData'
 import { renderRoute } from './sitePages'
 
 function App() {
   const { route, navigate } = useHashRoute()
+  const { profile, setProfile } = useCompanyProfile()
 
   return (
     <div className="app-shell">
@@ -48,7 +50,7 @@ function App() {
         </div>
       </aside>
 
-      <main className="page-shell">{renderRoute(route)}</main>
+      <main className="page-shell">{renderRoute(route, profile, setProfile)}</main>
     </div>
   )
 }

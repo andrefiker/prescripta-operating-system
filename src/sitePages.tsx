@@ -1,4 +1,6 @@
-import type { ReactNode } from 'react'
+import type { Dispatch, ReactNode, SetStateAction } from 'react'
+import { defaultCompanyProfile, type CompanyProfile } from './companyProfile'
+import { buildDocuments } from './documentGenerator'
 import {
   channels,
   clauseBlocks,
@@ -25,30 +27,50 @@ import {
   type RouteKey,
 } from './siteData'
 
-export function renderRoute(route: RouteKey) {
+export function renderRoute(
+  route: RouteKey,
+  profile: CompanyProfile,
+  setProfile: Dispatch<SetStateAction<CompanyProfile>>,
+) {
   switch (route) {
     case 'comercial':
-      return <CommercialPage />
+      return <CommercialPage profile={profile} />
     case 'compliance':
-      return <CompliancePage />
+      return <CompliancePage profile={profile} />
     case 'documentos':
-      return <DocumentsPage />
+      return <DocumentsPage profile={profile} setProfile={setProfile} />
     case 'onboarding':
-      return <OnboardingPage />
+      return <OnboardingPage profile={profile} />
     case 'publico':
-      return <PublicSitePage />
+      return <PublicSitePage profile={profile} />
     default:
-      return <HomePage />
+      return <HomePage profile={profile} />
   }
 }
 
-function HomePage() {
+function HomePage({ profile }: { profile: CompanyProfile }) {
   return (
     <PageFrame
       kicker="Overview"
       title="Tese, fase e ordem de construcao da Prescripta como empresa."
       intro="A Prescripta nao precisa esperar o produto estar completo para virar empresa. Ela precisa definir categoria, politica de beta, pacote juridico minimo e uma sequencia disciplinada de venda, onboarding e trust."
     >
+      <section className="profile-banner">
+        <div>
+          <p className="eyebrow">Perfil ativo da empresa</p>
+          <h3>
+            {profile.brandName} | {profile.companyStage}
+          </h3>
+          <p>
+            {profile.coreOffer}. Estrutura atual: {profile.legalStructure}. Motion comercial: {profile.salesMotion}.
+          </p>
+        </div>
+        <div className="profile-banner-meta">
+          <span>{profile.primaryIcp}</span>
+          <span>{profile.setupPolicy}</span>
+        </div>
+      </section>
+
       <section className="hero-board">
         {stats.map((stat) => (
           <article key={stat.label} className="stat-card">
@@ -108,13 +130,36 @@ function HomePage() {
   )
 }
 
-function CommercialPage() {
+function CommercialPage({ profile }: { profile: CompanyProfile }) {
   return (
     <PageFrame
       kicker="Comercial"
       title="ICP, oferta, pricing, funil, deck, one-pager e proposta."
       intro="A maquina comercial da Prescripta precisa transformar uma tese estreita em rotina de venda repetivel. Isso inclui buyer certo, pricing por fase, CRM disciplinado e materiais que nao prometam mais do que a empresa consegue sustentar."
     >
+      <section className="profile-snapshot">
+        <article className="sheet">
+          <p className="eyebrow">Estrutura comercial atual</p>
+          <h3>{profile.commercialModel}</h3>
+          <ul>
+            <li>ICP principal: {profile.primaryIcp}</li>
+            <li>ICP secundario: {profile.secondaryIcp}</li>
+            <li>Lider comercial: {profile.commercialLead}</li>
+            <li>Politica de piloto: {profile.pilotPolicy}</li>
+          </ul>
+        </article>
+        <article className="sheet">
+          <p className="eyebrow">Referencia de pricing</p>
+          <h3>{profile.brandName} vende implantacao, nao so licenca.</h3>
+          <ul>
+            <li>Plano de entrada: {profile.startPlanPrice}</li>
+            <li>Plano clinica: {profile.clinicPlanPrice}</li>
+            <li>Setup: {profile.setupPolicy}</li>
+            <li>Oferta central: {profile.coreOffer}</li>
+          </ul>
+        </article>
+      </section>
+
       <SectionTitle
         eyebrow="ICP"
         title="Comecar com os compradores certos."
@@ -175,13 +220,30 @@ function CommercialPage() {
   )
 }
 
-function CompliancePage() {
+function CompliancePage({ profile }: { profile: CompanyProfile }) {
   return (
     <PageFrame
       kicker="Compliance"
       title="Mapa juridico minimo vendavel, trust center e risco regulatorio."
       intro="Em saude, compliance nao e acessorio. E parte da oferta, do fechamento do contrato e da retencao."
     >
+      <section className="profile-snapshot">
+        <article className="sheet">
+          <p className="eyebrow">Governanca responsavel</p>
+          <h3>Contatos que precisam existir nos materiais.</h3>
+          <ul>
+            <li>Juridico: {profile.legalLead}</li>
+            <li>Privacidade / DPO: {profile.dpoContact}</li>
+            <li>Suporte: {profile.supportContact}</li>
+          </ul>
+        </article>
+        <article className="sheet">
+          <p className="eyebrow">Nota regulatoria atual</p>
+          <h3>Claim comercial e roadmap nao podem se misturar.</h3>
+          <p>{profile.roadmapNote}</p>
+        </article>
+      </section>
+
       <div className="panel-grid three">
         {compliancePanels.map((panel) => (
           <InsightPanel key={panel.title} panel={panel} />
@@ -234,13 +296,188 @@ function CompliancePage() {
   )
 }
 
-function DocumentsPage() {
+function DocumentsPage(props: {
+  profile: CompanyProfile
+  setProfile: Dispatch<SetStateAction<CompanyProfile>>
+}) {
+  const generatedDocuments = buildDocuments(props.profile)
+
   return (
     <PageFrame
       kicker="Documentos"
-      title="Templates quase finais para comercial, juridico e trust."
-      intro="Esses blocos nao substituem redacao juridica final, mas deixam a empresa a um passo de sair do improviso."
+      title="Workspace configuravel para documentos exportaveis da Prescripta."
+      intro="Preencha a estrutura societaria e comercial real da empresa, gere documentos a partir desse perfil e exporte tudo dali mesmo."
     >
+      <section className="document-workbench">
+        <article className="sheet profile-sheet">
+          <div className="sheet-head">
+            <div>
+              <p className="eyebrow">Perfil da empresa</p>
+              <h3>Campos-base da Prescripta</h3>
+            </div>
+            <button type="button" className="ghost-button" onClick={() => props.setProfile(defaultCompanyProfile)}>
+              Restaurar base
+            </button>
+          </div>
+
+          <div className="form-grid">
+            <FormField
+              label="Razao social"
+              value={props.profile.legalEntityName}
+              onChange={(value) => updateProfile(props.setProfile, 'legalEntityName', value)}
+            />
+            <FormField
+              label="Marca"
+              value={props.profile.brandName}
+              onChange={(value) => updateProfile(props.setProfile, 'brandName', value)}
+            />
+            <FormField
+              label="Estrutura societaria"
+              value={props.profile.legalStructure}
+              onChange={(value) => updateProfile(props.setProfile, 'legalStructure', value)}
+            />
+            <FormField
+              label="Sede"
+              value={props.profile.headquarters}
+              onChange={(value) => updateProfile(props.setProfile, 'headquarters', value)}
+            />
+            <FormField
+              label="Estagio atual"
+              value={props.profile.companyStage}
+              onChange={(value) => updateProfile(props.setProfile, 'companyStage', value)}
+            />
+            <FormField
+              label="Fundacao"
+              value={props.profile.foundingDate}
+              onChange={(value) => updateProfile(props.setProfile, 'foundingDate', value)}
+            />
+            <FormField
+              label="Fundadores / socios"
+              value={props.profile.founderNames}
+              onChange={(value) => updateProfile(props.setProfile, 'founderNames', value)}
+            />
+            <FormField
+              label="Lider comercial"
+              value={props.profile.commercialLead}
+              onChange={(value) => updateProfile(props.setProfile, 'commercialLead', value)}
+            />
+            <FormField
+              label="Responsavel juridico"
+              value={props.profile.legalLead}
+              onChange={(value) => updateProfile(props.setProfile, 'legalLead', value)}
+            />
+            <FormField
+              label="Contato de privacidade"
+              value={props.profile.dpoContact}
+              onChange={(value) => updateProfile(props.setProfile, 'dpoContact', value)}
+            />
+            <FormField
+              label="Contato de suporte"
+              value={props.profile.supportContact}
+              onChange={(value) => updateProfile(props.setProfile, 'supportContact', value)}
+            />
+            <FormField
+              label="Website"
+              value={props.profile.website}
+              onChange={(value) => updateProfile(props.setProfile, 'website', value)}
+            />
+            <FormField
+              label="ICP principal"
+              value={props.profile.primaryIcp}
+              onChange={(value) => updateProfile(props.setProfile, 'primaryIcp', value)}
+              textarea
+            />
+            <FormField
+              label="ICP secundario"
+              value={props.profile.secondaryIcp}
+              onChange={(value) => updateProfile(props.setProfile, 'secondaryIcp', value)}
+              textarea
+            />
+            <FormField
+              label="Modelo comercial"
+              value={props.profile.commercialModel}
+              onChange={(value) => updateProfile(props.setProfile, 'commercialModel', value)}
+              textarea
+            />
+            <FormField
+              label="Motion de vendas"
+              value={props.profile.salesMotion}
+              onChange={(value) => updateProfile(props.setProfile, 'salesMotion', value)}
+              textarea
+            />
+            <FormField
+              label="Politica de piloto"
+              value={props.profile.pilotPolicy}
+              onChange={(value) => updateProfile(props.setProfile, 'pilotPolicy', value)}
+              textarea
+            />
+            <FormField
+              label="Oferta central"
+              value={props.profile.coreOffer}
+              onChange={(value) => updateProfile(props.setProfile, 'coreOffer', value)}
+            />
+            <FormField
+              label="Preco de entrada"
+              value={props.profile.startPlanPrice}
+              onChange={(value) => updateProfile(props.setProfile, 'startPlanPrice', value)}
+            />
+            <FormField
+              label="Preco de clinica"
+              value={props.profile.clinicPlanPrice}
+              onChange={(value) => updateProfile(props.setProfile, 'clinicPlanPrice', value)}
+            />
+            <FormField
+              label="Politica de setup"
+              value={props.profile.setupPolicy}
+              onChange={(value) => updateProfile(props.setProfile, 'setupPolicy', value)}
+              textarea
+            />
+            <FormField
+              label="Nota regulatoria"
+              value={props.profile.roadmapNote}
+              onChange={(value) => updateProfile(props.setProfile, 'roadmapNote', value)}
+              textarea
+            />
+          </div>
+        </article>
+
+        <article className="sheet generator-sheet">
+          <p className="eyebrow">Geracao exportavel</p>
+          <h3>Documentos prontos para copiar ou baixar.</h3>
+          <p>
+            Cada arquivo abaixo e montado com base no perfil atual da empresa. O ideal e usar isso como camada pre-juridica
+            e pre-comercial antes da versao final em PDF, proposta ou minuta.
+          </p>
+
+          <div className="document-list">
+            {generatedDocuments.map((document) => (
+              <article key={document.key} className="generated-document">
+                <div className="sheet-head">
+                  <div>
+                    <p className="eyebrow">Documento</p>
+                    <h4>{document.title}</h4>
+                    <p>{document.description}</p>
+                  </div>
+                  <div className="document-actions">
+                    <button type="button" className="ghost-button" onClick={() => copyToClipboard(document.content)}>
+                      Copiar
+                    </button>
+                    <button
+                      type="button"
+                      className="primary-button"
+                      onClick={() => downloadText(document.fileName, document.content)}
+                    >
+                      Baixar .md
+                    </button>
+                  </div>
+                </div>
+                <pre>{document.content}</pre>
+              </article>
+            ))}
+          </div>
+        </article>
+      </section>
+
       <div className="template-grid two">
         {documentTemplates.map((template) => (
           <article key={template.title} className="template-sheet">
@@ -290,13 +527,22 @@ function DocumentsPage() {
   )
 }
 
-function OnboardingPage() {
+function OnboardingPage({ profile }: { profile: CompanyProfile }) {
   return (
     <PageFrame
       kicker="Onboarding"
       title="Implantacao, ativacao e customer success desde o primeiro contrato pago."
       intro="O valor da Prescripta aparece quando medico e operacao administrativa trabalham no mesmo fluxo. Por isso onboarding e CS precisam nascer junto com a venda."
     >
+      <section className="note-band compact">
+        <p className="eyebrow">Regra de implantacao</p>
+        <h3>{profile.brandName} precisa onboardar do jeito que vende.</h3>
+        <p>
+          O discurso comercial atual e {profile.salesMotion}. O onboarding precisa espelhar isso com kickoff,
+          owner definido, juridico operacional e revisao formal de ativacao.
+        </p>
+      </section>
+
       <div className="timeline">
         {onboardingTimeline.map((item, index) => (
           <article key={item[0]} className="timeline-card">
@@ -342,13 +588,32 @@ function OnboardingPage() {
   )
 }
 
-function PublicSitePage() {
+function PublicSitePage({ profile }: { profile: CompanyProfile }) {
   return (
     <PageFrame
       kicker="Site Publico"
       title="Blueprint da versao apresentavel da Prescripta e da sua expansao de GTM."
       intro="A versao publica deve funcionar como maquina de captacao e confianca. Ela nao precisa despejar todo o manual interno, mas precisa refletir uma empresa organizada."
     >
+      <section className="profile-snapshot">
+        <article className="sheet">
+          <p className="eyebrow">Narrativa publica recomendada</p>
+          <h3>{profile.coreOffer}</h3>
+          <p>
+            A homepage deve refletir o estagio real da empresa: {profile.companyStage}. O alvo principal continua sendo{' '}
+            {profile.primaryIcp}.
+          </p>
+        </article>
+        <article className="sheet">
+          <p className="eyebrow">Claims que precisam bater</p>
+          <ul>
+            <li>Oferta: {profile.coreOffer}</li>
+            <li>Pricing de referencia: {profile.startPlanPrice} ate {profile.clinicPlanPrice}</li>
+            <li>Suporte / privacidade: {profile.supportContact} e {profile.dpoContact}</li>
+          </ul>
+        </article>
+      </section>
+
       <div className="panel-grid three">
         {publicBlueprint.map((panel) => (
           <InsightPanel key={panel.title} panel={panel} />
@@ -427,4 +692,48 @@ function OfferCard({ offer }: { offer: Offer }) {
       </ul>
     </article>
   )
+}
+
+function FormField(props: {
+  label: string
+  value: string
+  onChange: (value: string) => void
+  textarea?: boolean
+}) {
+  return (
+    <label className={props.textarea ? 'form-field textarea' : 'form-field'}>
+      <span>{props.label}</span>
+      {props.textarea ? (
+        <textarea value={props.value} onChange={(event) => props.onChange(event.target.value)} rows={4} />
+      ) : (
+        <input value={props.value} onChange={(event) => props.onChange(event.target.value)} />
+      )}
+    </label>
+  )
+}
+
+function updateProfile(
+  setProfile: Dispatch<SetStateAction<CompanyProfile>>,
+  field: keyof CompanyProfile,
+  value: string,
+) {
+  setProfile((current) => ({ ...current, [field]: value }))
+}
+
+async function copyToClipboard(content: string) {
+  if (!navigator.clipboard) {
+    return
+  }
+
+  await navigator.clipboard.writeText(content)
+}
+
+function downloadText(fileName: string, content: string) {
+  const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' })
+  const url = URL.createObjectURL(blob)
+  const anchor = document.createElement('a')
+  anchor.href = url
+  anchor.download = fileName
+  anchor.click()
+  URL.revokeObjectURL(url)
 }

@@ -123,6 +123,43 @@
   text-decoration: none;
 }
 
+.profile-banner {
+  padding: 1.2rem 1.3rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.8fr);
+  gap: 1rem;
+  border: 1px solid rgba(191, 110, 38, 0.2);
+  border-radius: 1.4rem;
+  background:
+    radial-gradient(circle at top right, rgba(191, 110, 38, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(255, 250, 244, 0.9), rgba(244, 236, 225, 0.9));
+  box-shadow: 0 18px 40px rgba(34, 26, 19, 0.06);
+}
+
+.profile-banner h3 {
+  margin: 0.35rem 0 0.5rem;
+  font-size: 1.45rem;
+}
+
+.profile-banner p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.profile-banner-meta {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.profile-banner-meta span {
+  padding: 0.85rem 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(191, 110, 38, 0.16);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
 .page-shell {
   padding: 2rem;
 }
@@ -155,7 +192,9 @@
 .panel-grid,
 .offer-grid,
 .template-grid,
-.split-layout {
+.split-layout,
+.profile-snapshot,
+.document-workbench {
   display: grid;
   gap: 1.2rem;
 }
@@ -168,8 +207,14 @@
 
 .panel-grid.two,
 .template-grid.two,
-.split-layout {
+.split-layout,
+.profile-snapshot {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.document-workbench {
+  grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+  align-items: start;
 }
 
 .stat-card,
@@ -242,6 +287,141 @@
   gap: 1rem;
 }
 
+.sheet-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.profile-sheet,
+.generator-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-field.textarea {
+  grid-column: span 2;
+}
+
+.form-field span {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(91, 70, 54, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--text);
+  font: inherit;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: rgba(191, 110, 38, 0.42);
+  box-shadow: 0 0 0 4px rgba(191, 110, 38, 0.12);
+}
+
+.document-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.generated-document {
+  padding: 1rem;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(191, 110, 38, 0.16);
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.generated-document h4 {
+  margin: 0.35rem 0 0.45rem;
+  font-size: 1.1rem;
+}
+
+.generated-document p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.generated-document pre {
+  margin: 1rem 0 0;
+  padding: 1rem;
+  overflow: auto;
+  border-radius: 1rem;
+  background: rgba(17, 25, 31, 0.96);
+  color: #f7f1e8;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.document-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.ghost-button,
+.primary-button {
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.ghost-button {
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--text);
+}
+
+.primary-button {
+  border: 1px solid transparent;
+  background: linear-gradient(180deg, #c67939, #a85f24);
+  color: #fffaf3;
+  box-shadow: 0 10px 24px rgba(168, 95, 36, 0.22);
+}
+
+.ghost-button:hover,
+.primary-button:hover,
+.form-field input:hover,
+.form-field textarea:hover {
+  transform: translateY(-1px);
+}
+
+.compact {
+  padding: 1.1rem 0;
+}
+
+.compact h3 {
+  max-width: 16ch;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
 .timeline-card {
   padding: 1rem 1.2rem;
   display: grid;
@@ -312,8 +492,16 @@
   .panel-grid.two,
   .template-grid.two,
   .split-layout,
+  .profile-snapshot,
+  .profile-banner,
+  .document-workbench,
+  .form-grid,
   .matrix-row {
     grid-template-columns: 1fr;
+  }
+
+  .form-field.textarea {
+    grid-column: auto;
   }
 }
 
