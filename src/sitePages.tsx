@@ -310,7 +310,7 @@ function DocumentsPage(props: {
     <PageFrame
       kicker="Documentos"
       title="Workspace configuravel para documentos exportaveis da Prescripta."
-      intro="Preencha a estrutura societaria e comercial real da empresa, gere documentos a partir desse perfil e exporte tudo dali mesmo."
+      intro="Preencha a estrutura societaria e comercial real da empresa, gere documentos a partir desse perfil e use a biblioteca final importada como base oficial de envio e apresentacao."
     >
       <section className="document-workbench">
         <article className="sheet profile-sheet">
@@ -485,7 +485,7 @@ function DocumentsPage(props: {
       <SectionTitle
         eyebrow="Biblioteca"
         title="Documentos finais baixaveis por tier."
-        text="Esses ativos ja existem como arquivos em PDF, DOCX, XLSX ou markdown dentro do proprio site. A camada acima continua servindo para personalizacao rapida da Prescripta; a biblioteca abaixo e a base concreta de entrega."
+        text="Os PDFs e a planilha abaixo foram atualizados com o pacote otimizado importado para a Prescripta. Os formatos editaveis continuam disponiveis como apoio interno quando existirem."
       />
       <div className="tier-stack">
         <TierSection
