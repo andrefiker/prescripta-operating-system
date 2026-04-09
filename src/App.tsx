@@ -28,11 +28,14 @@ type StructuredSection = {
 
 const navLinks: SectionLink[] = [
   { id: 'tese', label: 'Tese' },
+  { id: 'fase', label: 'Fase' },
   { id: 'oferta', label: 'Oferta' },
   { id: 'vendas', label: 'Vendas' },
   { id: 'compliance', label: 'Compliance' },
   { id: 'documentos', label: 'Documentos' },
   { id: 'onboarding', label: 'Onboarding' },
+  { id: 'metricas', label: 'Metricas' },
+  { id: 'publico', label: 'Site publico' },
   { id: 'roadmap', label: '90 dias' },
 ]
 
@@ -204,6 +207,46 @@ const commercialArchitecture: StructuredSection[] = [
   },
 ]
 
+const phasePlan: StructuredSection[] = [
+  {
+    title: 'Fase atual: beta com disciplina comercial',
+    intro:
+      'O produto ainda pode ter acesso gratuito para gerar uso e feedback, mas a empresa ja precisa operar com regras comerciais claras.',
+    bullets: [
+      'Separar usuarios de beta aberto de design partners estrategicos.',
+      'Todo design partner deve ter termo, prazo, objetivo de validacao e criterio de conversao.',
+      'Nao deixar o beta virar zona cinzenta infinita sem decisao de compra.',
+    ],
+  },
+  {
+    title: 'Politica recomendada de beta',
+    intro:
+      'Usar o beta como instrumento de aprendizado e prova social, nao como substituto de pricing.',
+    bullets: [
+      'Beta livre so para fila curta e controlada, com onboarding leve e sem promessas enterprise.',
+      'Design partner com acesso de 60 a 90 dias, em troca de feedback estruturado e possibilidade de case.',
+      'Ao final do periodo, converter para plano pago ou encerrar formalmente.',
+    ],
+  },
+  {
+    title: 'Transicao para receita recorrente',
+    intro:
+      'A primeira cobranca precisa parecer evolucao natural da rotina, nao quebra de expectativa.',
+    bullets: [
+      'Publicar tabela de planos com observacao clara de beta e migracao.',
+      'Dar janela de conversao com incentivo de founder pricing para primeiros clientes pagos.',
+      'Usar pilotos pagos para contas de clinica desde cedo, sem esperar “produto perfeito”.',
+    ],
+  },
+]
+
+const pricingPolicy = [
+  'Beta aberto: gratuito, limitado e sem customizacao.',
+  'Founding design partner: condicao especial por prazo definido e termo proprio.',
+  'Primeiros clientes pagos: preco cheio com desconto de founder pricing por 12 meses, se fizer sentido comercial.',
+  'Nao oferecer descontos ad hoc sem criterio escrito de aprovacao.',
+]
+
 const funnelStages = [
   'Lead identificado',
   'Qualificacao inicial',
@@ -271,6 +314,29 @@ const demoScript = [
   'Minuto 10-13: mostrar como recepcao e medico operam com contexto e trilha.',
   'Minuto 13-16: apresentar pontos de confianca, LGPD e supervisao humana.',
   'Minuto 16-20: discutir plano, implantacao, premissas e proximo passo com data.',
+]
+
+const objectionMatrix = [
+  {
+    objection: 'Ja uso WhatsApp e agenda, por que preciso disso?',
+    answer:
+      'Porque o problema nao e lembrar uma tarefa isolada; e operar termino, retorno, alerta e confirmacao com trilha e previsibilidade.',
+  },
+  {
+    objection: 'Isso e um prontuario?',
+    answer:
+      'Nao. A Prescripta entra na camada operacional da recorrencia prescricional e nao tenta substituir o prontuario completo.',
+  },
+  {
+    objection: 'A IA toma decisao clinica?',
+    answer:
+      'Nao. A IA acelera organizacao e pre-preenchimento; a revisao e a autoridade final continuam com o medico.',
+  },
+  {
+    objection: 'Ainda estou receoso com LGPD e dados sensiveis.',
+    answer:
+      'A venda precisa vir acompanhada de DPA, papeis claros, politica de seguranca, trilha de auditoria e processo de incidente.',
+  },
 ]
 
 const legalSections: StructuredSection[] = [
@@ -373,6 +439,15 @@ const documentGroups = [
   },
 ]
 
+const trustCenterChecklist = [
+  'Termos de uso publicados e coerentes com a oferta real.',
+  'Politica de privacidade atualizada e acessivel.',
+  'DPA pronto para envio comercial.',
+  'Lista de subprocessadores publicada.',
+  'Politica de IA explicando revisao humana e limites.',
+  'Canal de seguranca/incidentes e processo de suporte formalizado.',
+]
+
 const onboardingSteps = [
   {
     title: '1. Kickoff comercial-operacional',
@@ -412,6 +487,30 @@ const csMetrics = [
   'Uso continuo: pacientes ativos com termino e alerta configurados.',
   'Saude operacional: tarefas concluidas no prazo, tickets, excecoes e retrabalho.',
   'Expansao: mais usuarios, mais unidades, mais pacientes ou upgrade de plano.',
+]
+
+const executiveMetrics = [
+  'MRR novo por mes e setup fechado por mes.',
+  'Numero de discovery calls, demos, propostas e fechamentos.',
+  'Tempo medio entre lead qualificado e assinatura.',
+  'Ativacao de contas em 30 dias e churn logo.',
+  'Quantidade de design partners convertidos para pago.',
+  'Contas com risco juridico/compliance pendente.',
+]
+
+const scorecardCadence = [
+  'Revisao semanal de pipeline e proximos passos por conta.',
+  'Revisao quinzenal de feedback de onboarding e friccoes de uso.',
+  'Revisao mensal de pricing, segmentacao e objecoes recorrentes.',
+  'Revisao mensal de compliance, contratos e readiness SNCR.',
+]
+
+const publicSiteBlueprint = [
+  'Homepage com categoria clara, problema, fluxo, confianca e CTA de demo.',
+  'Pagina de pricing com planos, o que muda entre beta e operacao comercial, setup e FAQs.',
+  'Trust Center publico com privacidade, DPA, subprocessadores, politica de IA e seguranca.',
+  'Pagina para clinicas e pagina para psiquiatra solo com narrativas diferentes.',
+  'FAQ comercial separado do FAQ juridico.',
 ]
 
 const sprintAccounts = [
@@ -557,6 +656,50 @@ function App() {
           </div>
         </section>
 
+        <section id="fase" className="content-section">
+          <div className="section-heading">
+            <p className="section-kicker">Fase atual e politica de beta</p>
+            <h2>Adaptar a narrativa ao momento real da Prescripta: beta, mas com governanca de empresa.</h2>
+            <p>
+              O site publico atual sinaliza acesso beta e conta gratis. Isso pode continuar, desde que exista uma
+              politica clara de quem esta testando, quem esta validando como design partner e quem ja deve entrar em
+              ciclo comercial pago.
+            </p>
+          </div>
+
+          <div className="editorial-grid">
+            {phasePlan.map((block) => (
+              <article key={block.title} className="text-block">
+                <h3>{block.title}</h3>
+                <p>{block.intro}</p>
+                <ul>
+                  {block.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+
+          <div className="two-column">
+            <article className="text-block">
+              <h3>Politica de pricing por fase</h3>
+              <ul>
+                {pricingPolicy.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="text-block">
+              <h3>Decisao executiva recomendada</h3>
+              <p>
+                Manter uma fila curta de beta aberto, converter design partners em pilotos com prazo e tratar toda
+                clinica como venda assistida desde ja. Isso evita que o mercado aprenda que a Prescripta e “gratuita”.
+              </p>
+            </article>
+          </div>
+        </section>
+
         <section id="oferta" className="content-section contrast-section">
           <div className="section-heading">
             <p className="section-kicker">Oferta, planos e pricing</p>
@@ -687,6 +830,28 @@ function App() {
               </ol>
             </article>
           </div>
+
+          <div className="two-column">
+            <article className="text-block">
+              <h3>Matriz de objecoes</h3>
+              <ul>
+                {objectionMatrix.map((item) => (
+                  <li key={item.objection}>
+                    <strong>{item.objection}</strong> {item.answer}
+                  </li>
+                ))}
+              </ul>
+            </article>
+            <article className="text-block">
+              <h3>Regras de proposta</h3>
+              <ul>
+                <li>Nenhuma proposta sai sem proximo passo agendado.</li>
+                <li>Nenhum desconto sai sem racional comercial escrito.</li>
+                <li>Nenhuma conta enterprise entra sem checklist de risco juridico e de implantacao.</li>
+                <li>Nenhuma conta de beta vira case sem autorizacao explicita.</li>
+              </ul>
+            </article>
+          </div>
         </section>
 
         <section id="compliance" className="content-section contrast-section">
@@ -736,6 +901,25 @@ function App() {
                 <span>{item.urgency}</span>
               </div>
             ))}
+          </div>
+
+          <div className="two-column">
+            <article className="text-block">
+              <h3>Checklist minimo do trust center</h3>
+              <ul>
+                {trustCenterChecklist.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="text-block">
+              <h3>Regra pratica de comunicacao</h3>
+              <p>
+                Todo claim de seguranca, LGPD, IA ou prescricao eletronica precisa existir de forma identica no site,
+                no deck, na proposta e no contrato. Se a frase nao sobreviver a essa consistencia, ela nao deve ir para
+                o marketing.
+              </p>
+            </article>
           </div>
         </section>
 
@@ -800,6 +984,67 @@ function App() {
                   <li key={metric}>{metric}</li>
                 ))}
               </ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="metricas" className="content-section">
+          <div className="section-heading">
+            <p className="section-kicker">Metricas e scorecard executivo</p>
+            <h2>O founder precisa operar a empresa por indicadores, nao por intuicao dispersa.</h2>
+            <p>
+              O objetivo do scorecard nao e burocracia. E criar disciplina para saber se a Prescripta esta virando
+              empresa ou apenas acumulando interesse sem conversao.
+            </p>
+          </div>
+
+          <div className="two-column">
+            <article className="text-block">
+              <h3>Metricas obrigatorias</h3>
+              <ul>
+                {executiveMetrics.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="text-block">
+              <h3>Cadencia de revisao</h3>
+              <ul>
+                {scorecardCadence.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="publico" className="content-section contrast-section">
+          <div className="section-heading">
+            <p className="section-kicker">Versao publica e apresentavel</p>
+            <h2>So depois da maquina minima estar fechada, ampliar o site publico e os canais.</h2>
+            <p>
+              O site publico deve funcionar como maquina de captacao e confianca. Ele nao precisa expor toda a
+              complexidade interna, mas deve refletir uma empresa organizada e pronta para compra.
+            </p>
+          </div>
+
+          <div className="two-column">
+            <article className="text-block">
+              <h3>Arquitetura da versao publica</h3>
+              <ul>
+                {publicSiteBlueprint.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="text-block">
+              <h3>Prioridade de publicacao</h3>
+              <ol>
+                <li>Atualizar homepage com categoria e CTA corretos.</li>
+                <li>Publicar pricing e trust center minimo.</li>
+                <li>Publicar pagina segmentada para psiquiatra solo e clinica.</li>
+                <li>So depois ampliar conteudo, SEO e distribuicao.</li>
+              </ol>
             </article>
           </div>
         </section>
