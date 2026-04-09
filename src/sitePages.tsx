@@ -12,15 +12,20 @@ import {
   documentInventory,
   documentTemplates,
   executiveMetrics,
+  fourWeekMetrics,
   icpPanels,
+  nextStepPriorities,
   objectionCards,
   offers,
   onboardingChecklists,
   onboardingTimeline,
+  outreachCopy,
+  outreachSequence,
   phasePanels,
   publicBlueprint,
   roadmap,
   stats,
+  targetAccounts,
   thesisPanels,
   trustChecklist,
   type Offer,
@@ -44,6 +49,8 @@ export function renderRoute(
       return <OnboardingPage profile={profile} />
     case 'publico':
       return <PublicSitePage profile={profile} />
+    case 'proximos':
+      return <NextStepsPage profile={profile} />
     default:
       return <HomePage profile={profile} />
   }
@@ -668,6 +675,116 @@ function PublicSitePage({ profile }: { profile: CompanyProfile }) {
           <p>O marketing nao deve correr na frente da prontidao operacional.</p>
         </article>
       </div>
+    </PageFrame>
+  )
+}
+
+function NextStepsPage({ profile }: { profile: CompanyProfile }) {
+  return (
+    <PageFrame
+      kicker="Proximos Passos"
+      title="O que fazer agora que o software esta pronto."
+      intro="A Prescripta ja tem software, documentos e narrativa suficientes para vender. O proximo passo nao e fazer mais material; e transformar isso em deals, go-lives e retencao."
+    >
+      <section className="profile-banner">
+        <div>
+          <p className="eyebrow">Diagnostico executivo</p>
+          <h3>O gargalo saiu de produto e entrou em execucao.</h3>
+          <p>
+            {profile.brandName} agora precisa provar que consegue vender {profile.coreOffer}, ativar contas e manter
+            uso recorrente com um processo comercial disciplinado.
+          </p>
+        </div>
+        <div className="profile-banner-meta">
+          <span>Prioridade 1: 5 clientes pagos</span>
+          <span>Prioridade 2: ativacao e retenção</span>
+        </div>
+      </section>
+
+      <SectionTitle
+        eyebrow="Prioridades"
+        title="A ordem certa para os proximos 60 dias."
+        text="Se eu estivesse operando a Prescripta como empresa, eu seguraria crescimento amplo e concentraria tudo em fechar clientes certos, ativar rapido e aprender com deals reais."
+      />
+      <div className="panel-grid three">
+        {nextStepPriorities.map((panel) => (
+          <InsightPanel key={panel.title} panel={panel} />
+        ))}
+      </div>
+
+      <SectionTitle
+        eyebrow="Contas-alvo"
+        title="Lista inicial para founder-led sales."
+        text="Essas contas sao a primeira onda recomendada. O criterio principal e dor recorrente, estrutura pequena ou media e chance de ciclo comercial curto."
+      />
+      <div className="matrix">
+        <div className="matrix-row matrix-head accounts-head">
+          <span>Prioridade</span>
+          <span>Conta</span>
+          <span>Cidade</span>
+          <span>Por que abordar</span>
+          <span>Site</span>
+        </div>
+        {targetAccounts.map((row) => (
+          <div className="matrix-row accounts-row" key={row[1]}>
+            <span>{row[0]}</span>
+            <span>{row[1]}</span>
+            <span>{row[2]}</span>
+            <span>{row[3]}</span>
+            <span>
+              <a href={row[4]} target="_blank" rel="noreferrer">
+                Abrir
+              </a>
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className="split-layout">
+        <article className="sheet">
+          <p className="eyebrow">Cadencia</p>
+          <h3>Sequencia de outreach recomendada.</h3>
+          <div className="timeline compact-timeline">
+            {outreachSequence.map((item) => (
+              <article key={item[0]} className="timeline-card">
+                <span>{item[0]}</span>
+                <div>
+                  <h3>{item[1]}</h3>
+                  <p>{item[2]}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </article>
+        <article className="sheet">
+          <p className="eyebrow">Metricas</p>
+          <h3>Meta das proximas 4 semanas.</h3>
+          <ul>
+            {fourWeekMetrics.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+
+      <SectionTitle
+        eyebrow="Mensagens"
+        title="Copys base para outreach."
+        text="O objetivo da primeira abordagem nao e demonstrar tudo. E abrir uma conversa sobre processo, ownership e recorrencia prescricional."
+      />
+      <div className="panel-grid three">
+        {outreachCopy.map((item) => (
+          <article key={item.title} className="insight-panel">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <section className="note-band">
+        <p className="eyebrow">Decisao central</p>
+        <h3>A Prescripta precisa provar venda, implantacao e retencao antes de escalar marketing.</h3>
+      </section>
     </PageFrame>
   )
 }

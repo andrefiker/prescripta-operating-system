@@ -503,6 +503,21 @@
   letter-spacing: 0.08em;
 }
 
+.accounts-head,
+.accounts-row {
+  grid-template-columns: minmax(5rem, 0.5fr) minmax(10rem, 1fr) minmax(8rem, 0.7fr) minmax(0, 1.6fr) minmax(5rem, 0.5fr);
+}
+
+.accounts-row a {
+  color: var(--copper-dark);
+  text-decoration: none;
+}
+
+.compact-timeline .timeline-card > span {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
 .note-band {
   padding: 1.4rem 0;
   border-top: 1px solid var(--line-strong);

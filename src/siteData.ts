@@ -1,4 +1,4 @@
-export type RouteKey = 'home' | 'comercial' | 'compliance' | 'documentos' | 'onboarding' | 'publico'
+export type RouteKey = 'home' | 'comercial' | 'compliance' | 'documentos' | 'onboarding' | 'publico' | 'proximos'
 
 export type NavItem = {
   key: RouteKey
@@ -50,6 +50,7 @@ export const navItems: NavItem[] = [
   { key: 'documentos', label: 'Documentos', kicker: 'Templates quase finais' },
   { key: 'onboarding', label: 'Onboarding', kicker: 'Implantacao e CS' },
   { key: 'publico', label: 'Site Publico', kicker: 'Versao apresentavel e GTM' },
+  { key: 'proximos', label: 'Proximos Passos', kicker: 'Execucao e contas-alvo' },
 ]
 
 export const stats = [
@@ -661,4 +662,80 @@ export const deliverableAssets: DeliverableAsset[] = [
       { label: 'Markdown', path: './documents/homepage-copy.md' },
     ],
   },
+]
+
+export const nextStepPriorities: PanelData[] = [
+  {
+    title: 'Fechar os primeiros 5 clientes pagos',
+    intro: 'O software pronto muda o gargalo. O foco agora e provar venda, ativacao e retencao.',
+    bullets: [
+      'Nao operar em beta aberto ou design partner indefinido.',
+      'Usar founder pricing apenas como excecao governada.',
+      'Validar com deals reais quem compra, quanto paga e como ativa.',
+    ],
+  },
+  {
+    title: 'Rodar founder-led sales por 6 a 8 semanas',
+    intro: 'A prioridade e conversa qualificada, nao canal de escala.',
+    bullets: [
+      'Lista nomeada de 30 a 50 contas.',
+      'Cadencia curta com discovery, demo, proposta e follow-up.',
+      'Aprender com deals perdidos e friccao comercial antes de ampliar marketing.',
+    ],
+  },
+  {
+    title: 'Medir ativacao antes de investir em crescimento',
+    intro: 'Sem go-live e uso recorrente, marketing so amplia barulho.',
+    bullets: [
+      'Time-to-value na primeira recorrencia organizada.',
+      'Ativacao em 7 e 30 dias.',
+      'Uso recorrente, churn logo e motivo de nao ativacao.',
+    ],
+  },
+]
+
+export const targetAccounts = [
+  ['A', 'Clinica NOZ', 'Sao Paulo', 'Clinica privada com narrativa forte de continuidade de cuidado.', 'https://www.clinicanoz.com/'],
+  ['A', 'L&T Mental Health Care', 'Sao Paulo', 'Operacao com psiquiatria, psicologia e neuromodulacao; boa chance de dor operacional real.', 'https://www.clinicalt.com.br/'],
+  ['A', 'Clinica OHR Psiquiatria', 'Sao Paulo', 'Psiquiatria particular com potencial de rotina recorrente e compra enxuta.', 'https://www.ohrpsiquiatria.com.br/'],
+  ['A', 'Clinica Gaude', 'Sao Paulo', 'Estrutura particular com psiquiatria e jornada de acompanhamento.', 'https://clinicagaude.com.br/psiquiatria/'],
+  ['A', 'Mental Med Saude', 'Sao Paulo', 'Psiquiatria dentro de estrutura medica mais ampla, com potencial de ownership operacional.', 'https://www.mentalmedsaude.com.br/'],
+  ['A', 'Clinica Maxwell / Psiquiatria em SP', 'Atibaia', 'Discurso forte de acompanhamento continuo e monitoramento.', 'https://psiquiatriaemsp.com.br/'],
+  ['B', 'IMCELER TelePsiquiatria', 'Brasil', 'Conta de perfil institucional para segunda onda, nao fase 1.', 'https://imceler.com.br/telepsiquiatria/'],
+]
+
+export const outreachSequence = [
+  ['Dia 1', 'Email inicial', 'Abrir conversa sobre processo, nao sobre produto.'],
+  ['Dia 3', 'Follow-up curto', 'Reposicionar a dor como falta de governanca de rotina.'],
+  ['Dia 5', 'WhatsApp ou ligacao', 'Pedir 15 minutos, sem pitch longo.'],
+  ['Dia 8', 'Envio de one-pager', 'Mandar material apenas se houver interesse minimo.'],
+  ['Dia 12', 'Ultimo follow-up', 'Encerrar com clareza: agora, depois ou fora de timing.'],
+]
+
+export const outreachCopy = [
+  {
+    title: 'Email inicial',
+    text:
+      'Oi, [Nome]. Estou falando com clinicas e psiquiatras que ainda operam parte da recorrencia entre consulta, prazo, retorno e renovacao em agenda, WhatsApp e fluxo manual. A Prescripta foi desenhada para organizar exatamente essa camada operacional, sem virar prontuario e sem mexer na autoridade clinica. Se fizer sentido, posso te mostrar em 15 minutos como estamos estruturando isso para operacoes de psiquiatria privada.',
+  },
+  {
+    title: 'Follow-up de tese',
+    text:
+      'O ponto central aqui nao e trocar canal. E dar visibilidade e ownership a uma rotina que costuma ficar espalhada entre recepcao, medico e paciente. Se isso hoje ja gera retrabalho ou perda de contexto, vale a conversa.',
+  },
+  {
+    title: 'Encerramento da cadencia',
+    text:
+      'Quero te deixar com uma pergunta objetiva: faz sentido conversar sobre organizacao de recorrencia prescricional agora ou melhor retomarmos em outro momento? Se nao estiver na hora, eu tiro da cadencia sem problema.',
+  },
+]
+
+export const fourWeekMetrics = [
+  '30 contas listadas e priorizadas.',
+  '20 contas efetivamente contatadas.',
+  '10 respostas ou interacoes relevantes.',
+  '8 discovery calls realizadas.',
+  '5 demos feitas.',
+  '3 propostas enviadas.',
+  '1 a 3 fechamentos pagos.',
 ]
