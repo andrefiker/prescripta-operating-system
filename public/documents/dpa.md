@@ -1,16 +1,80 @@
-# DPA - Data Processing Agreement - Prescripta
+Acordo de Processamento de Dados (DPA)
+Data Processing Agreement | Vigência: 09/04/2026
+1. Partes
+Controlador: O cliente que contrata a plataforma Prescripta (doravante "Cliente" ou "Controlador").
+Operador: Concordia MedOps Tecnologia Ltda., operadora da plataforma Prescripta (doravante "Prescripta"
+ou "Operador").
+2. Objeto
+Este Acordo regulamenta o tratamento de dados pessoais realizado pela Prescripta em nome e sob
+instrução do Cliente, no contexto da prestação dos serviços SaaS contratados.
+3. Escopo do Tratamento
+Aspecto
+Descrição
+Natureza
+Tratamento automatizado e não automatizado de dados pessoais inseridos
+pelo Cliente na plataforma.
+Finalidade
+Execução do fluxo operacional de prescrições recorrentes conforme contrato
+de serviço.
+Tipos de dados
+Dados cadastrais de pacientes, medicamentos, prazos, renovações, retornos,
+confirmações e logs operacionais.
+Categorias de titulares
+Pacientes do Cliente e membros da equipe operacional do Cliente.
+Duração
+Vigência do contrato principal, acrescida do período de retenção para
+portabilidade.
+4. Obrigações do Operador
+-  Tratar dados pessoais exclusivamente conforme instruções documentadas do Controlador.
+-  Não utilizar dados pessoais para finalidades próprias, incluindo marketing, perfilamento ou
+comercialização.
+-  Garantir que pessoas autorizadas a tratar dados estejam sujeitas a obrigação de confidencialidade.
+-  Implementar medidas técnicas e organizacionais adequadas conforme Art. 46 da LGPD.
+-  Não subcontratar outro operador sem autorização prévia do Controlador, exceto subprocessadores já
+listados.
+-  Auxiliar o Controlador no atendimento a solicitações de titulares, na medida do tecnicamente possível.
+-  Notificar o Controlador em até 48 horas após tomar ciência de incidente de segurança envolvendo
+dados pessoais.
+-  Ao término do contrato, devolver ou eliminar dados pessoais conforme instrução do Controlador, salvo
+obrigação legal de retenção.
 
-## 1. Finalidade e escopo
-Este DPA integra a proposta comercial, ordem de servico ou contrato SaaS celebrado entre Prescripta Tecnologia em Saude Ltda. e a contratante. Ele regula o tratamento de dados pessoais realizado pela Prescripta no contexto da prestacao de servicos SaaS, especialmente quando a Prescripta atuar como operadora em nome da contratante.
+5. Obrigações do Controlador
+-  Garantir que possui base legal adequada para o tratamento dos dados inseridos na plataforma.
+-  Fornecer instruções lícitas e documentadas ao Operador.
+-  Informar seus pacientes/titulares sobre o uso da plataforma, conforme LGPD.
+-  Notificar o Operador sobre quaisquer alterações em requisitos regulatórios aplicáveis.
+6. Subprocessadores
+A lista atualizada de subprocessadores está disponível no Trust Center da Prescripta. Alterações na lista
+serão comunicadas com 30 dias de antecedência, permitindo ao Controlador apresentar objeção
+fundamentada.
+7. Medidas de Segurança
+-  Criptografia em trânsito (TLS 1.2+) e em repouso (AES-256).
+-  Controle de acesso baseado em função (RBAC).
+-  Autenticação segura com política de senhas e, quando disponível, MFA.
+-  Backup periódico com testes de restauração.
+-  Monitoramento contínuo de logs e alertas de segurança.
+-  Processo documentado de resposta a incidentes.
+8. Incidentes de Segurança
+Em caso de incidente envolvendo dados pessoais do Controlador, o Operador deve: (i) notificar o
+Controlador em até 48 horas; (ii) fornecer descrição do incidente, categorias e volume aproximado de dados
+afetados, medidas adotadas e ponto de contato; (iii) cooperar com a investigação e mitigação.
+9. Auditoria
+O Controlador pode solicitar evidências de conformidade mediante requerimento escrito com 30 dias de
+antecedência. A Prescripta disponibilizará relatórios, certificações e registros aplicáveis. Auditorias
+presenciais, quando justificadas, serão realizadas em horário comercial e às custas do Controlador.
+10. Vigência e Rescisão
+Este Acordo vigora enquanto durar o contrato principal de serviços. As obrigações de confidencialidade e
+segurança sobrevivem ao término pelo prazo necessário ao cumprimento das obrigações de retenção e
+eliminação.
+Pelo Controlador (Cliente):
+Pelo Operador (Prescripta):
+Nome: ____________________________
+Nome: ____________________________
+Cargo: ____________________________
+Cargo: ____________________________
+Data: _____/_____/_________
+Data: _____/_____/_________
 
-## 2. Instrucao documentada e finalidades autorizadas
-A Prescripta tratara dados pessoais de acordo com as instrucoes documentadas da contratante, com o escopo contratado e com a legislacao aplicavel. O tratamento inclui hospedagem, organizacao, exibicao, manutencao, suporte, trilhas de uso, autenticacao, seguranca, backup, implantacao e demais operacoes necessarias para a execucao do servico contratado.
-
-## 3. Categorias de dados, seguranca e confidencialidade
-As categorias de dados e titulares dependerao do uso concreto contratado, podendo abranger profissionais de saude, equipe operacional, representantes da contratante e pacientes envolvidos no fluxo de recorrencia prescricional. A Prescripta adotara medidas tecnicas e organizacionais proporcionais ao risco e assegurara que pessoas autorizadas a tratar dados estejam sujeitas a obrigacoes de confidencialidade compatveis com a natureza dos dados tratados.
-
-## 4. Subprocessadores, cooperacao e incidentes
-A Prescripta podera utilizar subprocessadores para hospedar, operar, monitorar, comunicar, atender ou prestar suporte ao servico, desde que imponha obrigacoes adequadas de protecao de dados e mantenha lista atualizada dos subprocessadores relevantes. A Prescripta prestara assistencia proporcional para atendimento a direitos dos titulares e comunicara a contratante sem atraso indevido quando tomar conhecimento de incidente de seguranca relevante no contexto do servico.
-
-## 5. Retencao, exclusao e auditoria documental
-Encerrado o contrato, a Prescripta observara as regras contratuais de retencao, exportacao quando aplicavel, descarte seguro e arquivamento minimo para exercicio regular de direitos e obrigacoes legais ou reguladoras. Mediante pedido razoavel, a Prescripta podera disponibilizar informacoes documentais sobre praticas de seguranca, privacidade, subprocessadores e politicas aplicaveis, resguardados segredos comerciais e proporcionalidade operacional. Esta versao e uma minuta-base e deve ser revista pelo juridico antes do uso final.
+Assinatura: _______________________
+Assinatura: _______________________
+Este documento deve ser revisado por advogado antes da utilização.

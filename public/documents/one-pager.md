@@ -1,21 +1,46 @@
-# One-pager - Prescripta
-
-## Headline
-A camada operacional da recorrencia prescricional para psiquiatria privada.
-
-## Subheadline
-Menos improviso entre consulta, prazo e renovacao. Mais visibilidade, ownership e continuidade operacional.
-
-## O problema
-Consultorios e clinicas ainda dependem de agenda, WhatsApp, memoria individual e retrabalho manual para acompanhar termino previsto, retorno e renovacao. Isso reduz previsibilidade, aumenta carga cognitiva e cria risco operacional.
-
-## O que a Prescripta faz
-A Prescripta organiza a rotina de recorrencia prescricional em um fluxo observavel, com fila, status, contexto, alerta e acompanhamento assistido. A plataforma entra de forma estreita no processo em que a dor realmente acontece.
-
-## O que nao faz
-- Nao e prontuario generico.
-- Nao toma decisao clinica autonoma.
-- Nao promete cobertura regulatoria fora do escopo contratado.
-
-## Confianca e CTA
-LGPD, DPA, politica de IA com supervisao humana, trilha operacional e direcao clara sobre limites de escopo e roadmap regulatorio. Agende uma demo diagnostica ou solicite um piloto pago estruturado em comercial@prescripta.com.br.
+Prescripta
+A camada operacional da recorrência prescricional para psiquiatria privada.
+O problema
+Psiquiatras e clínicas perdem pacientes, tempo e segurança operacional porque a renovação de prescrições
+recorrentes depende de WhatsApp, agenda manual e memória. O resultado: atrasos, descontinuidade terapêutica,
+retrabalho administrativo e risco regulatório.
+A solução
+A Prescripta transforma término previsto, alerta, retorno, renovação e confirmação em um fluxo observável, com
+trilha de auditoria e supervisão humana em cada etapa.
+Para o psiquiatra
+Para a clínica
+Menos carga cognitiva. Contexto pronto antes da
+consulta. Términos visíveis sem dependência de
+agenda. Mais retenção de pacientes crônicos.
+Fila central com status e responsável. Menos
+retrabalho de recepção e secretaria. Trilha de
+auditoria por ação. Relatórios operacionais para
+gestão.
+Como funciona
+1. Paciente é cadastrado com medicamentos, prazos e regras de contato.
+2. Alertas automáticos sinalizam términos próximos e pendências.
+3. Equipe opera renovação, retorno e confirmação dentro do fluxo.
+4. Médico revisa e aprova com contexto preparado e trilha visível.
+Confiança e compliance
+-  LGPD: política de privacidade, DPA e bases legais documentadas.
+-  IA: toda saída passa por revisão humana. Dados não são usados para treinamento.
+-  Segurança: criptografia, controle de acesso, logs e plano de incidentes.
+-  Roadmap regulatório: SNCR e controlados em trilha paralela com transparência.
+Planos
+Plano
+Para quem
+Valor
+Start Solo
+Psiquiatra particular, até 150 pacientes
+R$ 349/mês
+Pro Consultório
+Até 3 usuários, 600 pacientes
+R$ 990/mês + R$ 1.500 setup
+Clínica
+Até 10 usuários, fila central
+R$ 2.490/mês + R$ 4.500 setup
+Enterprise
+Redes e grupos
+Sob proposta
+Próximo passo: Agendar demonstração ou iniciar piloto pago.
+[email] | [telefone] | prescripta.com.br

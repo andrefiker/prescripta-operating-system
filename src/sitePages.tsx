@@ -312,6 +312,34 @@ function DocumentsPage(props: {
       title="Workspace configuravel para documentos exportaveis da Prescripta."
       intro="Preencha a estrutura societaria e comercial real da empresa, gere documentos a partir desse perfil e use a biblioteca final importada como base oficial de envio e apresentacao."
     >
+      <SectionTitle
+        eyebrow="Final Pack"
+        title="Arquivos finais primeiro."
+        text="Esta biblioteca e a camada principal de envio, consulta e preview. Os materiais editaveis ficam abaixo como apoio interno para adaptacao rapida."
+      />
+      <div className="tier-stack">
+        <TierSection
+          title="Tier 1 | Nao vende sem isso"
+          intro="Pacote juridico e comercial minimo para enviar proposta, fechar contrato e sustentar a narrativa da empresa."
+          assets={tier1Assets}
+        />
+        <TierSection
+          title="Tier 2 | Onboarding dos primeiros clientes"
+          intro="Materiais de implantacao, treinamento, discovery e trust para as primeiras contas pagas."
+          assets={tier2Assets}
+        />
+        <TierSection
+          title="Tier 3 | Operacao de pipeline"
+          intro="Especificacoes de CRM, projecao de receita, playbook de objecoes e copy de homepage para rodar o comercial."
+          assets={tier3Assets}
+        />
+      </div>
+
+      <SectionTitle
+        eyebrow="Workspace"
+        title="Arquivos editaveis e de apoio."
+        text="A mesa abaixo serve para personalizar a Prescripta e gerar rascunhos rapidos em markdown. Ela nao substitui a biblioteca final otimizada que esta acima."
+      />
       <section className="document-workbench">
         <article className="sheet profile-sheet">
           <div className="sheet-head">
@@ -481,29 +509,6 @@ function DocumentsPage(props: {
           </div>
         </article>
       </section>
-
-      <SectionTitle
-        eyebrow="Biblioteca"
-        title="Documentos finais baixaveis por tier."
-        text="Os PDFs e a planilha abaixo foram atualizados com o pacote otimizado importado para a Prescripta. Os formatos editaveis continuam disponiveis como apoio interno quando existirem."
-      />
-      <div className="tier-stack">
-        <TierSection
-          title="Tier 1 | Nao vende sem isso"
-          intro="Pacote juridico e comercial minimo para enviar proposta, fechar contrato e sustentar a narrativa da empresa."
-          assets={tier1Assets}
-        />
-        <TierSection
-          title="Tier 2 | Onboarding dos primeiros clientes"
-          intro="Materiais de implantacao, treinamento, discovery e trust para as primeiras contas pagas."
-          assets={tier2Assets}
-        />
-        <TierSection
-          title="Tier 3 | Operacao de pipeline"
-          intro="Especificacoes de CRM, projecao de receita, playbook de objecoes e copy de homepage para rodar o comercial."
-          assets={tier3Assets}
-        />
-      </div>
 
       <div className="template-grid two">
         {documentTemplates.map((template) => (

@@ -1,3 +1,4 @@
 reportlab
 python-docx
 openpyxl
+pypdf

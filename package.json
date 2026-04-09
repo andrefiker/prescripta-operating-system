@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "generate:assets": "python scripts/generate_assets.py",
+    "sync:editable": "python scripts/sync_editable_from_pdfs.py",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
