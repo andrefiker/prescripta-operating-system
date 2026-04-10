@@ -65,12 +65,12 @@ export const navItems: NavItem[] = [
 export const stats = [
   {
     label: 'Categoria',
-    value: 'Infraestrutura operacional para recorrencia prescricional',
+    value: 'Infraestrutura operacional para recorrencia prescricional em psiquiatria privada',
     note: 'A Prescripta deve vender processo, previsibilidade e governanca.',
   },
   {
     label: 'Estagio',
-    value: 'Beta controlado com transicao para receita',
+    value: 'Beta controlado com conversao progressiva para receita recorrente',
     note: 'Beta serve para aprendizado e prova, nao para adiar pricing indefinidamente.',
   },
   {

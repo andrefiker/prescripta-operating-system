@@ -32,7 +32,7 @@ export const defaultCompanyProfile: CompanyProfile = {
   foundingDate: '[DEFINIR: ano ou marco]',
   founderNames: 'Andre Fiker, Robson [sobrenome]',
   commercialLead: 'Andre Fiker',
-  legalLead: "[DEFINIR: nome do advogado ou 'A contratar']",
+  legalLead: 'Juridico externo especializado em healthtech e LGPD',
   dpoContact: 'privacidade@prescripta.com.br',
   supportContact: 'suporte@prescripta.com.br',
   website: 'prescripta.com.br',
