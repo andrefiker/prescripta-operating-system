@@ -398,6 +398,16 @@ function CompliancePage({ profile }: { profile: CompanyProfile }) {
       </div>
 
       <section className="warning-panel">
+        <p className="eyebrow">Pendencias fundacionais</p>
+        <h3>O pacote juridico esta publicavel, mas nao deve parecer juridicamente finalizado em tudo.</h3>
+        <ul>
+          <li>CNPJ ainda depende de decisao societaria e registro formal.</li>
+          <li>Estrutura societaria final ainda nao esta travada no perfil da empresa.</li>
+          <li>Subprocessadores e localizacao de dados ainda precisam de versao final nominal.</li>
+        </ul>
+      </section>
+
+      <section className="warning-panel">
         <p className="eyebrow">Diretriz executiva</p>
         <h3>Separar o que ja e claim valido do que ainda e roadmap regulatorio.</h3>
         <p>Especialmente para controlados, assinatura qualificada e SNCR.</p>
@@ -549,11 +559,11 @@ function TrustCenterPage({ profile }: { profile: CompanyProfile }) {
           </div>
         </article>
         <article className="sheet visual-sheet">
-          <p className="eyebrow">Pendencia explicita</p>
-          <h3>CNPJ e definicoes societarias ainda dependem de decisao do founder, nao de produto.</h3>
+          <p className="eyebrow">Bloco juridico com pendencias fundacionais</p>
+          <h3>CNPJ, definicao societaria final e lista nominal de subprocessadores ainda nao estao fechados.</h3>
           <p>
-            Enquanto essa decisao nao fecha, os documentos precisam manter placeholder explicito e coerente, em vez de
-            sugerir completude juridica falsa.
+            Enquanto essas decisoes nao fecham, a camada juridica precisa manter placeholder explicito, explicar o que
+            ja esta valendo e evitar qualquer aparencia de completude falsa.
           </p>
           <p>Contatos publicos: {profile.dpoContact} | {profile.supportContact} | incidente@prescripta.com.br</p>
         </article>
@@ -614,6 +624,16 @@ function DocumentsPage(props: {
           route={props.route}
         />
       </div>
+
+      <section className="warning-panel">
+        <p className="eyebrow">Bloco juridico com pendencias fundacionais</p>
+        <h3>Os documentos Tier 1 existem, mas ainda nao devem ser vendidos como camada juridica totalmente encerrada.</h3>
+        <ul>
+          <li>Confirmar CNPJ e estrutura societaria final antes de envio definitivo de contrato.</li>
+          <li>Substituir placeholders remanescentes de dados societarios e subprocessadores.</li>
+          <li>Manter coerencia entre Termos, Politica de Privacidade, DPA e contrato enquanto o fechamento final nao sai.</li>
+        </ul>
+      </section>
 
       <SectionTitle
         eyebrow="Workspace"
