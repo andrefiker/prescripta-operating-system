@@ -72,12 +72,32 @@ export function renderRoute(
   }
 }
 
+type QuickNavItem = {
+  id: string
+  label: string
+}
+
+type SnapshotItem = {
+  label: string
+  value: string
+}
+
 function HomePage({ profile }: { profile: CompanyProfile }) {
   return (
     <PageFrame
       kicker="Overview"
       title="Tese, fase e ordem de construcao da Prescripta como empresa."
       intro="A Prescripta nao precisa esperar o produto estar completo para virar empresa. Ela precisa definir categoria, politica de beta, pacote juridico minimo e uma sequencia disciplinada de venda, onboarding e trust."
+      snapshots={[
+        { label: 'Oferta', value: profile.coreOffer },
+        { label: 'ICP principal', value: 'Psiquiatria privada de alta recorrencia' },
+        { label: 'Momento', value: profile.companyStage },
+      ]}
+      quickNav={[
+        { id: 'overview-tese', label: 'Tese' },
+        { id: 'overview-fase', label: 'Fase' },
+        { id: 'overview-roadmap', label: 'Roadmap' },
+      ]}
     >
       <section className="profile-banner">
         <div>
@@ -105,51 +125,58 @@ function HomePage({ profile }: { profile: CompanyProfile }) {
         ))}
       </section>
 
-      <SectionTitle
+      <SectionBlock
+        id="overview-tese"
         eyebrow="Tese"
         title="Primeiro fechar a ideia economica do negocio."
         text="O objetivo nao e so ter software funcional. E ter uma empresa com narrativa defensavel, buyer claro e uma promessa que sobreviva a site, proposta, contrato, onboarding e diligencia."
-      />
-      <div className="panel-grid three">
-        {thesisPanels.map((panel) => (
-          <InsightPanel key={panel.title} panel={panel} />
-        ))}
-      </div>
+        visual={<MindMap center="Prescripta" nodes={['Categoria', 'ICP', 'Pricing', 'Trust', 'Onboarding']} />}
+      >
+        <div className="panel-grid three">
+          {thesisPanels.map((panel) => (
+            <InsightPanel key={panel.title} panel={panel} />
+          ))}
+        </div>
+      </SectionBlock>
 
-      <SectionTitle
+      <SectionBlock
+        id="overview-fase"
         eyebrow="Fase"
         title="Beta com disciplina, nao beta eterno."
         text="A linguagem publica precisa refletir o estagio real da Prescripta. E o beta precisa ter dono, prazo e criterio de conversao."
-      />
-      <div className="panel-grid three">
-        {phasePanels.map((panel) => (
-          <InsightPanel key={panel.title} panel={panel} />
-        ))}
-      </div>
+      >
+        <div className="panel-grid three">
+          {phasePanels.map((panel) => (
+            <InsightPanel key={panel.title} panel={panel} />
+          ))}
+        </div>
+      </SectionBlock>
 
       <section className="note-band">
         <p className="eyebrow">Regra executiva</p>
         <h3>O mercado nao pode aprender que a Prescripta e gratuita, indefinida ou "mais uma IA de saude".</h3>
       </section>
 
-      <SectionTitle
+      <SectionBlock
+        id="overview-roadmap"
         eyebrow="Roadmap"
         title="A ordem importa mais do que a quantidade de iniciativas."
         text="Antes de escalar canal, a empresa precisa travar ICP, pricing, pacote juridico, proposta, onboarding e prova de ativacao."
-      />
-      <div className="panel-grid three">
-        {roadmap.map((item) => (
-          <article key={item.phase} className="roadmap-card">
-            <p className="roadmap-phase">{item.phase}</p>
-            <h3>{item.title}</h3>
-            <ul>
-              {item.bullets.map((bullet) => (
-                <li key={bullet}>{bullet}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
+      >
+        <div className="panel-grid three">
+          {roadmap.map((item) => (
+            <article key={item.phase} className="roadmap-card">
+              <p className="roadmap-phase">{item.phase}</p>
+              <h3>{item.title}</h3>
+              <ul>
+                {item.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </SectionBlock>
     </PageFrame>
   )
 }
@@ -160,6 +187,15 @@ function CompetitorsPage() {
       kicker="Concorrentes"
       title="Mapa competitivo da categoria e pathways de desenvolvimento para o que ainda falta na Prescripta."
       intro="Esta aba consolida o inventario funcional da categoria e traduz os gaps mais criticos em backlog acionavel. O objetivo nao e copiar tudo. E decidir o que precisa existir para vender, implantar e defender a narrativa do produto."
+      snapshots={[
+        { label: 'Baseline de mercado', value: 'Agenda + WhatsApp + teleconsulta + prescricao digital' },
+        { label: 'Maior risco', value: 'Parecer estreita demais cedo demais' },
+        { label: 'Melhor aposta', value: 'Escalas psiquiatricas + recorrencia operacional' },
+      ]}
+      quickNav={[
+        { id: 'competitors-map', label: 'Mapa' },
+        { id: 'competitors-roadmap', label: 'Roadmap' },
+      ]}
     >
       <section className="profile-banner">
         <div>
@@ -185,27 +221,32 @@ function CompetitorsPage() {
         <p>Esses itens concentram o maior impacto em compra, ativacao, maturidade percebida e risco regulatorio.</p>
       </section>
 
-      <SectionTitle
+      <SectionBlock
+        id="competitors-map"
         eyebrow="Mapa competitivo"
         title="Inventario por categoria funcional."
         text="Cada bloco abaixo resume o que a categoria ja considera normal ou valioso. Os sinais de mercado ajudam a separar commodity, diferenciador e item que pode ficar para depois."
-      />
-      <div className="panel-grid two">
-        {competitorCategories.map((category) => (
-          <CompetitorCategoryCard key={category.title} category={category} />
-        ))}
-      </div>
+        visual={<MindMap center="Mercado" nodes={['Agenda', 'Comunicacao', 'Prescricao', 'Prontuario', 'Teleconsulta']} />}
+      >
+        <div className="panel-grid two">
+          {competitorCategories.map((category) => (
+            <CompetitorCategoryCard key={category.title} category={category} />
+          ))}
+        </div>
+      </SectionBlock>
 
-      <SectionTitle
+      <SectionBlock
+        id="competitors-roadmap"
         eyebrow="Pathways"
         title="Como construir os gaps que mais influenciam decisao de compra."
         text="Os pathways abaixo tratam cada gap como um programa de produto. A logica e destravar o minimo vendavel de cada bloco sem dissolver o wedge central da Prescripta."
-      />
-      <div className="panel-grid two">
-        {competitorCriticalGaps.map((pathway) => (
-          <BuildPathwayCard key={pathway.gap} pathway={pathway} />
-        ))}
-      </div>
+      >
+        <div className="panel-grid two">
+          {competitorCriticalGaps.map((pathway) => (
+            <BuildPathwayCard key={pathway.gap} pathway={pathway} />
+          ))}
+        </div>
+      </SectionBlock>
     </PageFrame>
   )
 }
@@ -216,6 +257,17 @@ function CommercialPage({ profile }: { profile: CompanyProfile }) {
       kicker="Comercial"
       title="ICP, oferta, pricing, funil, deck, one-pager e proposta."
       intro="A maquina comercial da Prescripta precisa transformar uma tese estreita em rotina de venda repetivel. Isso inclui buyer certo, pricing por fase, CRM disciplinado e materiais que nao prometam mais do que a empresa consegue sustentar."
+      snapshots={[
+        { label: 'Motion', value: 'Discovery -> demo -> proposta -> kickoff' },
+        { label: 'Oferta base', value: 'SaaS com implantacao assistida' },
+        { label: 'Meta', value: 'Conversao disciplinada, nao volume vazio' },
+      ]}
+      quickNav={[
+        { id: 'commercial-icp', label: 'ICP' },
+        { id: 'commercial-pricing', label: 'Oferta' },
+        { id: 'commercial-sales', label: 'Canal + CRM' },
+        { id: 'commercial-objections', label: 'Objecoes' },
+      ]}
     >
       <section className="profile-snapshot">
         <article className="sheet">
@@ -245,7 +297,7 @@ function CommercialPage({ profile }: { profile: CompanyProfile }) {
         title="Comecar com os compradores certos."
         text="O ICP deve ser escolhido pela clareza da dor, pela chance de ativacao e pela capacidade de pagar por processo e governanca."
       />
-      <div className="panel-grid three">
+      <div id="commercial-icp" className="panel-grid three">
         {icpPanels.map((panel) => (
           <InsightPanel key={panel.title} panel={panel} />
         ))}
@@ -256,13 +308,13 @@ function CommercialPage({ profile }: { profile: CompanyProfile }) {
         title="Precificar por complexidade operacional e valor economico."
         text="O setup pago aparece onde implantacao realmente muda o sucesso da conta. Founder pricing pode existir, mas como excecao governada, nao como bagunca comercial."
       />
-      <div className="offer-grid">
+      <div id="commercial-pricing" className="offer-grid">
         {offers.map((offer) => (
           <OfferCard key={offer.name} offer={offer} />
         ))}
       </div>
 
-      <div className="split-layout">
+      <div id="commercial-sales" className="split-layout">
         <article className="sheet">
           <p className="eyebrow">Canais prioritarios</p>
           <h3>Onde vender primeiro</h3>
@@ -288,7 +340,7 @@ function CommercialPage({ profile }: { profile: CompanyProfile }) {
         title="Objecoes de venda precisam de resposta padrao."
         text="Se cada conversa responde de um jeito, a empresa cria risco e perde taxa de conversao."
       />
-      <div className="panel-grid two">
+      <div id="commercial-objections" className="panel-grid two">
         {objectionCards.map((card) => (
           <article key={card.title} className="insight-panel">
             <h3>{card.title}</h3>
@@ -306,6 +358,16 @@ function CompliancePage({ profile }: { profile: CompanyProfile }) {
       kicker="Compliance"
       title="Mapa juridico minimo vendavel, trust center e risco regulatorio."
       intro="Em saude, compliance nao e acessorio. E parte da oferta, do fechamento do contrato e da retencao."
+      snapshots={[
+        { label: 'Objetivo', value: 'Reduzir objecao juridica e de risco' },
+        { label: 'Contatos', value: 'Juridico + DPO + suporte claros' },
+        { label: 'Regra', value: 'Claim e roadmap nunca se misturam' },
+      ]}
+      quickNav={[
+        { id: 'compliance-foundation', label: 'Fundacao' },
+        { id: 'compliance-trust', label: 'Trust' },
+        { id: 'compliance-matrix', label: 'Matriz' },
+      ]}
     >
       <section className="profile-snapshot">
         <article className="sheet">
@@ -324,7 +386,7 @@ function CompliancePage({ profile }: { profile: CompanyProfile }) {
         </article>
       </section>
 
-      <div className="panel-grid three">
+      <div id="compliance-foundation" className="panel-grid three">
         {compliancePanels.map((panel) => (
           <InsightPanel key={panel.title} panel={panel} />
         ))}
@@ -336,7 +398,7 @@ function CompliancePage({ profile }: { profile: CompanyProfile }) {
         <p>Especialmente para controlados, assinatura qualificada e SNCR.</p>
       </section>
 
-      <div className="split-layout">
+      <div id="compliance-trust" className="split-layout">
         <article className="sheet">
           <p className="eyebrow">Trust center minimo</p>
           <h3>Checklist publico</h3>
@@ -358,7 +420,7 @@ function CompliancePage({ profile }: { profile: CompanyProfile }) {
         title="Cada workstream precisa de responsavel claro."
         text="Sem dono, a empresa acumula pendencias de risco. E sem urgencia explicita, tudo parece poder esperar."
       />
-      <div className="matrix">
+      <div id="compliance-matrix" className="matrix">
         <div className="matrix-row matrix-head">
           <span>Workstream</span>
           <span>Dono</span>
@@ -391,13 +453,23 @@ function DocumentsPage(props: {
       kicker="Documentos"
       title="Workspace configuravel para documentos exportaveis da Prescripta."
       intro="Preencha a estrutura societaria e comercial real da empresa, gere documentos a partir desse perfil e use a biblioteca final importada como base oficial de envio e apresentacao."
+      snapshots={[
+        { label: 'Uso principal', value: 'Enviar, adaptar e exportar material' },
+        { label: 'Camada critica', value: 'Tier 1 primeiro, editavel depois' },
+        { label: 'Persistencia', value: 'Perfil local + exportacao JSON' },
+      ]}
+      quickNav={[
+        { id: 'documents-pack', label: 'Final Pack' },
+        { id: 'documents-workspace', label: 'Workspace' },
+        { id: 'documents-inventory', label: 'Inventario' },
+      ]}
     >
       <SectionTitle
         eyebrow="Final Pack"
         title="Arquivos finais primeiro."
         text="Esta biblioteca e a camada principal de envio, consulta e preview. Os materiais editaveis ficam abaixo como apoio interno para adaptacao rapida."
       />
-      <div className="tier-stack">
+      <div id="documents-pack" className="tier-stack">
         <TierSection
           title="Tier 1 | Nao vende sem isso"
           intro="Pacote juridico e comercial minimo para enviar proposta, fechar contrato e sustentar a narrativa da empresa."
@@ -420,7 +492,7 @@ function DocumentsPage(props: {
         title="Arquivos editaveis e de apoio."
         text="A mesa abaixo serve para personalizar a Prescripta e gerar rascunhos rapidos em markdown. Ela nao substitui a biblioteca final otimizada que esta acima."
       />
-      <section className="document-workbench">
+      <section id="documents-workspace" className="document-workbench">
         <article className="sheet profile-sheet">
           <div className="sheet-head">
             <div>
@@ -622,7 +694,7 @@ function DocumentsPage(props: {
         title="Blocos quase prontos para uso comercial e juridico."
         text="Aqui o objetivo ja nao e listar topicos, e sim oferecer linguagem-base que pode ser refinada pelo juridico ou pela equipe comercial."
       />
-      <div className="panel-grid two">
+      <div id="documents-inventory" className="panel-grid two">
         {clauseBlocks.map((block) => (
           <article key={block.title} className="insight-panel">
             <h3>{block.title}</h3>
@@ -658,6 +730,16 @@ function OnboardingPage({ profile }: { profile: CompanyProfile }) {
       kicker="Onboarding"
       title="Implantacao, ativacao e customer success desde o primeiro contrato pago."
       intro="O valor da Prescripta aparece quando medico e operacao administrativa trabalham no mesmo fluxo. Por isso onboarding e CS precisam nascer junto com a venda."
+      snapshots={[
+        { label: 'Objetivo', value: 'Ativar rapido e reduzir retrabalho' },
+        { label: 'Regra', value: 'Onboardar do jeito que vende' },
+        { label: 'Sucesso', value: 'Primeira recorrencia organizada' },
+      ]}
+      quickNav={[
+        { id: 'onboarding-flow', label: 'Fluxo' },
+        { id: 'onboarding-checklists', label: 'Checklists' },
+        { id: 'onboarding-metrics', label: 'Metricas' },
+      ]}
     >
       <section className="note-band compact">
         <p className="eyebrow">Regra de implantacao</p>
@@ -668,7 +750,14 @@ function OnboardingPage({ profile }: { profile: CompanyProfile }) {
         </p>
       </section>
 
-      <div className="timeline">
+      <SectionBlock
+        id="onboarding-flow"
+        eyebrow="Fluxo"
+        title="Implantacao em seis momentos."
+        text="A leitura aqui precisa ser de operacao: o que acontece, em que ordem e com qual objetivo."
+        visual={<MindMap center="Go-live" nodes={['Kickoff', 'Mapeamento', 'Cadencia', 'Juridico', 'Treinamento']} />}
+      >
+        <div className="timeline">
         {onboardingTimeline.map((item, index) => (
           <article key={item[0]} className="timeline-card">
             <span>{String(index + 1).padStart(2, '0')}</span>
@@ -678,9 +767,10 @@ function OnboardingPage({ profile }: { profile: CompanyProfile }) {
             </div>
           </article>
         ))}
-      </div>
+        </div>
+      </SectionBlock>
 
-      <div className="panel-grid three">
+      <div id="onboarding-checklists" className="panel-grid three">
         {onboardingChecklists.map((list) => (
           <article key={list.title} className="insight-panel">
             <h3>{list.title}</h3>
@@ -693,7 +783,7 @@ function OnboardingPage({ profile }: { profile: CompanyProfile }) {
         ))}
       </div>
 
-      <div className="split-layout">
+      <div id="onboarding-metrics" className="split-layout">
         <article className="sheet">
           <p className="eyebrow">Metricas de CS</p>
           <h3>Como medir se a conta realmente entrou em rotina.</h3>
@@ -719,8 +809,18 @@ function PublicSitePage({ profile }: { profile: CompanyProfile }) {
       kicker="Site Publico"
       title="Blueprint da versao apresentavel da Prescripta e da sua expansao de GTM."
       intro="A versao publica deve funcionar como maquina de captacao e confianca. Ela nao precisa despejar todo o manual interno, mas precisa refletir uma empresa organizada."
+      snapshots={[
+        { label: 'Narrativa', value: 'Recorrencia prescricional, nao prontuario amplo' },
+        { label: 'Sequencia', value: 'Homepage -> pricing -> trust -> segmentadas' },
+        { label: 'Risco', value: 'Prometer mais do que ja existe' },
+      ]}
+      quickNav={[
+        { id: 'public-story', label: 'Narrativa' },
+        { id: 'public-stack', label: 'Pilha minima' },
+        { id: 'public-metrics', label: 'Scorecard' },
+      ]}
     >
-      <section className="profile-snapshot">
+      <section id="public-story" className="profile-snapshot">
         <article className="sheet">
           <p className="eyebrow">Narrativa publica recomendada</p>
           <h3>{profile.coreOffer}</h3>
@@ -739,13 +839,21 @@ function PublicSitePage({ profile }: { profile: CompanyProfile }) {
         </article>
       </section>
 
-      <div className="panel-grid three">
+      <SectionBlock
+        id="public-stack"
+        eyebrow="Pilha minima"
+        title="O site precisa vender e reduzir objecao."
+        text="A ideia nao e despejar manual interno. E fazer o comprador entender categoria, confianca e proximo passo em poucos minutos."
+        visual={<MindMap center="Site publico" nodes={['Homepage', 'Pricing', 'Trust', 'Solo', 'Clinica']} />}
+      >
+        <div className="panel-grid three">
         {publicBlueprint.map((panel) => (
           <InsightPanel key={panel.title} panel={panel} />
         ))}
-      </div>
+        </div>
+      </SectionBlock>
 
-      <div className="split-layout">
+      <div id="public-metrics" className="split-layout">
         <article className="sheet">
           <p className="eyebrow">Metricas obrigatorias</p>
           <h3>Scorecard executivo</h3>
@@ -771,6 +879,17 @@ function NextStepsPage({ profile }: { profile: CompanyProfile }) {
       kicker="Proximos Passos"
       title="O que fazer agora que o software esta pronto."
       intro="A Prescripta ja tem software, documentos e narrativa suficientes para vender. O proximo passo nao e fazer mais material; e transformar isso em deals, go-lives e retencao."
+      snapshots={[
+        { label: 'Prioridade 1', value: '5 clientes pagos' },
+        { label: 'Prioridade 2', value: 'Ativacao e retencao' },
+        { label: 'Modo', value: 'Founder-led sales por 6 a 8 semanas' },
+      ]}
+      quickNav={[
+        { id: 'next-priorities', label: 'Prioridades' },
+        { id: 'next-accounts', label: 'Contas' },
+        { id: 'next-cadence', label: 'Cadencia' },
+        { id: 'next-copy', label: 'Mensagens' },
+      ]}
     >
       <section className="profile-banner">
         <div>
@@ -792,7 +911,7 @@ function NextStepsPage({ profile }: { profile: CompanyProfile }) {
         title="A ordem certa para os proximos 60 dias."
         text="Se eu estivesse operando a Prescripta como empresa, eu seguraria crescimento amplo e concentraria tudo em fechar clientes certos, ativar rapido e aprender com deals reais."
       />
-      <div className="panel-grid three">
+      <div id="next-priorities" className="panel-grid three">
         {nextStepPriorities.map((panel) => (
           <InsightPanel key={panel.title} panel={panel} />
         ))}
@@ -803,7 +922,7 @@ function NextStepsPage({ profile }: { profile: CompanyProfile }) {
         title="Lista inicial para founder-led sales."
         text="Essas contas sao a primeira onda recomendada. O criterio principal e dor recorrente, estrutura pequena ou media e chance de ciclo comercial curto."
       />
-      <div className="matrix">
+      <div id="next-accounts" className="matrix">
         <div className="matrix-row matrix-head accounts-head">
           <span>Prioridade</span>
           <span>Conta</span>
@@ -826,7 +945,7 @@ function NextStepsPage({ profile }: { profile: CompanyProfile }) {
         ))}
       </div>
 
-      <div className="split-layout">
+      <div id="next-cadence" className="split-layout">
         <article className="sheet">
           <p className="eyebrow">Cadencia</p>
           <h3>Sequencia de outreach recomendada.</h3>
@@ -858,7 +977,7 @@ function NextStepsPage({ profile }: { profile: CompanyProfile }) {
         title="Copys base para outreach."
         text="O objetivo da primeira abordagem nao e demonstrar tudo. E abrir uma conversa sobre processo, ownership e recorrencia prescricional."
       />
-      <div className="panel-grid three">
+      <div id="next-copy" className="panel-grid three">
         {outreachCopy.map((item) => (
           <article key={item.title} className="insight-panel">
             <h3>{item.title}</h3>
@@ -881,6 +1000,17 @@ function StressTestPage({ profile }: { profile: CompanyProfile }) {
       kicker="Stress Test"
       title="Produto, adoção e pricing sob pressao."
       intro="Esta aba trata Prescripta como produto em uso real. A pergunta nao e se a ideia parece boa. E se ela sobrevive a comportamento humano, input ruim, urgencia clinica e resistencia a mudar rotina."
+      snapshots={[
+        { label: 'Veredito', value: finalVerdict.verdict },
+        { label: 'Loop', value: 'Captura -> termino -> alerta -> decisao' },
+        { label: 'Alavanca', value: 'Dominar o momento da renovacao' },
+      ]}
+      quickNav={[
+        { id: 'stress-loop', label: 'Loop' },
+        { id: 'stress-failures', label: 'Falhas' },
+        { id: 'stress-reality', label: 'Realidade suja' },
+        { id: 'stress-pricing', label: 'Pricing' },
+      ]}
     >
       <section className="profile-banner">
         <div>
@@ -894,11 +1024,13 @@ function StressTestPage({ profile }: { profile: CompanyProfile }) {
         </div>
       </section>
 
-      <SectionTitle
+      <SectionBlock
+        id="stress-loop"
         eyebrow="Loop Minimo"
         title="O menor loop que entrega valor em 24 horas."
         text="Se Prescripta nao gerar valor a partir de uma unica prescriçao, com poucas acoes e sem mudar radicalmente o comportamento do medico, o desenho inicial esta errado."
-      />
+        visual={<MindMap center="Renovacao" nodes={['Consulta', 'Duracao', 'Alerta', 'Acao', 'Contexto']} />}
+      >
       <div className="timeline">
         {minimumViableLoop.map((item, index) => (
           <article key={item[0]} className="timeline-card">
@@ -910,6 +1042,7 @@ function StressTestPage({ profile }: { profile: CompanyProfile }) {
           </article>
         ))}
       </div>
+      </SectionBlock>
 
       <div className="split-layout">
         <article className="sheet">
@@ -948,7 +1081,7 @@ function StressTestPage({ profile }: { profile: CompanyProfile }) {
         title="Se Prescripta falhar, vai falhar aqui."
         text="O produto precisa ser desenhado contra habito, desconfiança, alerta ignorado e input sujo. Qualquer uma dessas frentes derruba retencao."
       />
-      <div className="matrix">
+      <div id="stress-failures" className="matrix">
         <div className="matrix-row matrix-head failure-head">
           <span>Tipo</span>
           <span>Como falha</span>
@@ -968,7 +1101,7 @@ function StressTestPage({ profile }: { profile: CompanyProfile }) {
         title="O produto precisa funcionar em uso parcial e input imperfeito."
         text="Se Prescripta so for util quando os dados estiverem limpos e a adesao for alta, ela morre. O desenho certo degrada com elegancia."
       />
-      <div className="panel-grid three">
+      <div id="stress-reality" className="panel-grid three">
         {messyRealityPanels.map((panel) => (
           <InsightPanel key={panel.title} panel={panel} />
         ))}
@@ -996,7 +1129,7 @@ function StressTestPage({ profile }: { profile: CompanyProfile }) {
         title="O preço so fecha se o produto virar rotina critica."
         text="Assinatura mensal nao se sustenta em uso ocasional. Se Prescripta for consultada so de vez em quando, vira nice-to-have e o preço quebra."
       />
-      <div className="panel-grid three">
+      <div id="stress-pricing" className="panel-grid three">
         {pricingStressPanels.map((panel) => (
           <InsightPanel key={panel.title} panel={panel} />
         ))}
@@ -1010,13 +1143,22 @@ function StressTestPage({ profile }: { profile: CompanyProfile }) {
   )
 }
 
-function PageFrame(props: { kicker: string; title: string; intro: string; children: ReactNode }) {
+function PageFrame(props: {
+  kicker: string
+  title: string
+  intro: string
+  quickNav?: QuickNavItem[]
+  snapshots?: SnapshotItem[]
+  children: ReactNode
+}) {
   return (
     <div className="page-frame">
       <header className="page-hero">
         <p className="eyebrow">{props.kicker}</p>
         <h2>{props.title}</h2>
         <p className="page-intro">{props.intro}</p>
+        {props.snapshots?.length ? <SnapshotRail items={props.snapshots} /> : null}
+        {props.quickNav?.length ? <PageQuickNav items={props.quickNav} /> : null}
       </header>
       {props.children}
     </div>
@@ -1030,6 +1172,65 @@ function SectionTitle(props: { eyebrow: string; title: string; text: string }) {
       <h3>{props.title}</h3>
       <p>{props.text}</p>
     </header>
+  )
+}
+
+function PageQuickNav({ items }: { items: QuickNavItem[] }) {
+  return (
+    <nav className="page-quick-nav" aria-label="Navegacao interna da pagina">
+      {items.map((item) => (
+        <a key={item.id} href={`#${item.id}`} className="quick-nav-chip">
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  )
+}
+
+function SnapshotRail({ items }: { items: SnapshotItem[] }) {
+  return (
+    <div className="snapshot-rail">
+      {items.map((item) => (
+        <article key={item.label} className="snapshot-tile">
+          <p className="eyebrow">{item.label}</p>
+          <h3>{item.value}</h3>
+        </article>
+      ))}
+    </div>
+  )
+}
+
+function SectionBlock(props: {
+  id: string
+  eyebrow: string
+  title: string
+  text: string
+  visual?: ReactNode
+  children: ReactNode
+}) {
+  return (
+    <section id={props.id} className="section-block">
+      <div className="section-block-head">
+        <SectionTitle eyebrow={props.eyebrow} title={props.title} text={props.text} />
+        {props.visual ? <div className="section-block-visual">{props.visual}</div> : null}
+      </div>
+      {props.children}
+    </section>
+  )
+}
+
+function MindMap(props: { center: string; nodes: string[] }) {
+  return (
+    <div className="mind-map" aria-hidden="true">
+      <div className="mind-map-center">{props.center}</div>
+      <div className="mind-map-ring">
+        {props.nodes.map((node) => (
+          <span key={node} className="mind-map-node">
+            {node}
+          </span>
+        ))}
+      </div>
+    </div>
   )
 }
 
