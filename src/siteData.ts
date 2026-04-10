@@ -62,7 +62,11 @@ export type CompetitorCategory = {
 export type BuildPathway = {
   gap: string
   why: string
+  order: string
   horizon: string
+  dependencies: string[]
+  effort: string
+  blockers: string[]
   steps: string[]
 }
 
@@ -816,7 +820,19 @@ export const competitorCriticalGaps: BuildPathway[] = [
   {
     gap: 'Assinatura digital ICP-Brasil',
     why: 'Bloqueador regulatorio direto para receituario valido e para qualquer ambicao com controlados.',
+    order: 'Depois de trust center publico e base documental minima; antes de qualquer narrativa forte de controlados.',
     horizon: '90 a 150 dias',
+    dependencies: [
+      'Politica de IA, DPA e trilha de auditoria minimamente fechadas.',
+      'Definicao do fluxo de prescricao que sera assinado.',
+      'Parceiro tecnico ou provedor de assinatura qualificada escolhido.',
+    ],
+    effort: 'Alto',
+    blockers: [
+      'Complexidade juridico-regulatoria.',
+      'Dependencia de parceiro externo e certificacao.',
+      'Necessidade de prova forte de integridade, log e guarda do artefato.',
+    ],
     steps: [
       'Definir se a Prescripta vai integrar um provedor existente de assinatura qualificada ou operar apenas como orquestradora do fluxo.',
       'Modelar casos de uso: receita comum, receita de controle especial, termo e laudo.',
@@ -827,7 +843,19 @@ export const competitorCriticalGaps: BuildPathway[] = [
   {
     gap: 'Integracao Memed',
     why: 'Expectativa clara de mercado; sem isso a camada de prescricao parece incompleta para o comprador.',
+    order: 'Entre os primeiros blocos clinicos a construir, logo depois do trust publico e do fluxo-base de prescricao.',
     horizon: '30 a 60 dias',
+    dependencies: [
+      'Fluxo de prescricao e entrega ao paciente claramente modelado.',
+      'Acesso comercial e tecnico a API da Memed.',
+      'UI simples para medico e equipe sem virar prontuario completo.',
+    ],
+    effort: 'Medio',
+    blockers: [
+      'Negociacao de parceria e acesso a API.',
+      'Risco de alargar o produto para prontuario generico.',
+      'Necessidade de manter experiencia mais rapida do que o processo atual do medico.',
+    ],
     steps: [
       'Abrir parceria tecnica e comercial com a Memed e confirmar requisitos de acesso a API.',
       'Mapear exatamente onde a Memed entra no fluxo Prescripta sem virar prontuario completo.',
@@ -838,7 +866,19 @@ export const competitorCriticalGaps: BuildPathway[] = [
   {
     gap: 'Teleconsulta integrada',
     why: 'Ja virou commodity e reduz objecao de compra para consultorios e operacoes hibridas.',
+    order: 'Depois de agenda minima e antes de atacar operacoes maiores que esperam atendimento hibrido.',
     horizon: '45 a 90 dias',
+    dependencies: [
+      'Agenda e eventos de consulta minimamente estruturados.',
+      'Provedor de video white-label ou API de video escolhida.',
+      'Politica de consentimento e registro de teleconsulta definida.',
+    ],
+    effort: 'Medio',
+    blockers: [
+      'Dependencia de infraestrutura de video confiavel.',
+      'Complexidade de UX quando acoplada a agenda e ao contexto do paciente.',
+      'Possivel expansao de escopo para gravacao, chat e compartilhamento de tela.',
+    ],
     steps: [
       'Comecar por integracao com provedor de video white-label em vez de construir stack propria.',
       'Acoplar a sala de teleconsulta ao contexto do paciente e ao evento de agenda.',
@@ -849,7 +889,19 @@ export const competitorCriticalGaps: BuildPathway[] = [
   {
     gap: 'Lembrete e confirmacao por WhatsApp',
     why: 'E o argumento comercial mais facil de entender para reducao de no-show e ganho operacional.',
+    order: 'Muito cedo, junto da agenda minima; e uma das alavancas mais visiveis de compra.',
     horizon: '30 a 60 dias',
+    dependencies: [
+      'Modelo de agenda, status e eventos minimamente definido.',
+      'Provedor oficial de WhatsApp Business API.',
+      'Politica de opt-in e templates aprovados.',
+    ],
+    effort: 'Medio',
+    blockers: [
+      'Aprovacao de templates e regras do ecossistema WhatsApp.',
+      'Custo operacional por mensagem.',
+      'Complexidade de reconciliar resposta do paciente com status reais da agenda.',
+    ],
     steps: [
       'Fechar provedor oficial da API do WhatsApp Business e definir custo por mensagem.',
       'Modelar templates para lembrete, confirmacao, retorno e follow-up de ausencia.',
@@ -860,7 +912,19 @@ export const competitorCriticalGaps: BuildPathway[] = [
   {
     gap: 'Agendamento online publico',
     why: 'Permite aquisicao e conveniencia 24h sem depender da recepcao para tudo.',
+    order: 'Depois de agenda minima, bloqueios e regras de disponibilidade; antes de escalar acquisition.',
     horizon: '45 a 75 dias',
+    dependencies: [
+      'Agenda com slots, bloqueios e buffers.',
+      'Modelo de profissional, tipo de consulta e disponibilidade.',
+      'Fluxo de confirmacao e remarcacao basico.',
+    ],
+    effort: 'Medio',
+    blockers: [
+      'Risco de edge cases de agenda e colisao de slots.',
+      'Necessidade de UX muito clara para paciente final.',
+      'Dependencia de boa integracao com notificacoes e confirmacao.',
+    ],
     steps: [
       'Subir pagina publica por profissional com slots disponiveis e regras simples de elegibilidade.',
       'Conectar slots a agenda principal com bloqueios, buffers e tipos de consulta.',
@@ -871,7 +935,19 @@ export const competitorCriticalGaps: BuildPathway[] = [
   {
     gap: 'Controle financeiro basico',
     why: 'Fluxo de caixa, recibo e repasse entram cedo na conversa com clinicas.',
+    order: 'Depois de provar agenda, comunicacao e ativacao; nao deve entrar antes do wedge principal estabilizar.',
     horizon: '60 a 120 dias',
+    dependencies: [
+      'Modelo claro do que e faturamento por consulta versus caixa interno.',
+      'Escopo inicial restrito: recebimentos, despesas e recibo.',
+      'Decisao sobre integracao fiscal futura versus operacao manual no inicio.',
+    ],
+    effort: 'Medio para alto',
+    blockers: [
+      'Expansao de escopo para ERP clinico.',
+      'Complexidade fiscal brasileira se entrar cedo demais em NF-e.',
+      'Baixo foco se o ICP inicial ainda compra mais por recorrencia do que por financeiro.',
+    ],
     steps: [
       'Comecar com recebimentos, despesas, caixa e emissao simples de recibo.',
       'Separar claramente o que e financeiro interno da clinica do que e faturamento medico por atendimento.',
@@ -882,7 +958,19 @@ export const competitorCriticalGaps: BuildPathway[] = [
   {
     gap: 'Faturamento TISS',
     why: 'Necessario para capturar clinicas e operacoes com convenio; sem isso parte do mercado fica fora.',
+    order: 'Bem depois do PMF inicial; tratar como trilha separada, nao como extensao do core logo cedo.',
     horizon: '120 a 180 dias',
+    dependencies: [
+      'Decisao estrategica de entrar em convenios como mercado-alvo real.',
+      'Conhecimento operacional de guias, glosas, TUSS e operadoras.',
+      'Time com capacidade de tocar integracoes e compliance especificos.',
+    ],
+    effort: 'Muito alto',
+    blockers: [
+      'Complexidade operacional e regulatoria alta.',
+      'Risco de desviar a empresa do wedge principal.',
+      'Implementacao dificil de testar sem parceiro de piloto muito engajado.',
+    ],
     steps: [
       'Validar se esse bloco e essencial para o ICP de curto prazo ou se deve ficar fora da fase 1.',
       'Mapear operadoras, guias, eventos e glosas mais frequentes em psiquiatria privada.',
@@ -893,7 +981,19 @@ export const competitorCriticalGaps: BuildPathway[] = [
   {
     gap: 'Escalas psiquiatricas no prontuario',
     why: 'Pode virar diferencial real de especialidade, especialmente onde os generalistas ainda sao fracos.',
+    order: 'Cedo, depois da base clinica minima; e o melhor gap para virar diferenciação de especialidade.',
     horizon: '30 a 75 dias',
+    dependencies: [
+      'Modelo de prontuario ou contexto clinico minimo onde a escala vai viver.',
+      'Selecao das escalas prioritarias por uso real no ICP.',
+      'Visualizacao longitudinal por paciente.',
+    ],
+    effort: 'Medio',
+    blockers: [
+      'Risco de crescer prontuario demais sem resolver UX.',
+      'Necessidade de modelagem clinica boa para nao virar formulario morto.',
+      'Priorizacao correta das escalas certas para o ICP, e nao um pacote enciclopedico.',
+    ],
     steps: [
       'Priorizar um pacote inicial: PHQ-9, GAD-7, Y-BOCS e PANSS ou equivalentes mais frequentes no ICP.',
       'Modelar aplicacao, historico longitudinal e visualizacao de evolucao por paciente.',
@@ -904,7 +1004,19 @@ export const competitorCriticalGaps: BuildPathway[] = [
   {
     gap: 'Trial gratuito ou piloto com entrada muito baixa',
     why: 'Ausencia de trial adiciona friccao de aquisicao quando a categoria ainda precisa ser explicada.',
+    order: 'Imediato, junto do ajuste de narrativa publica e pricing de entrada.',
     horizon: '15 a 30 dias',
+    dependencies: [
+      'Definicao do que e beta, trial e piloto pago.',
+      'Instrumentacao minima de ativacao e conversao.',
+      'Pagina publica explicando a regra comercial sem ambiguidade.',
+    ],
+    effort: 'Baixo para medio',
+    blockers: [
+      'Risco de treinar o mercado para gratuidade permanente.',
+      'Confusao entre beta aberto e piloto estruturado.',
+      'Falta de metricao de ativacao se o trial abrir cedo demais.',
+    ],
     steps: [
       'Decidir se o modelo sera trial aberto curto, trial guiado ou piloto pago descontavel na conversao.',
       'Limitar escopo do trial para preservar valor e evitar treinar o mercado para gratuidade permanente.',
@@ -915,7 +1027,19 @@ export const competitorCriticalGaps: BuildPathway[] = [
   {
     gap: 'Politica LGPD publica e trust center minimo',
     why: 'Sem isso o comprador serio trava antes de assinatura ou diligencia simples.',
+    order: 'Primeiro de todos os gaps estruturais; deve existir antes de escalar outbound, pricing e narrativa publica.',
     horizon: '7 a 21 dias',
+    dependencies: [
+      'Termos de Uso, Politica de Privacidade, DPA e Politica de IA minimamente consistentes.',
+      'Lista de subprocessadores e contatos de privacidade, suporte e incidente.',
+      'Coerencia entre site, proposta e contrato.',
+    ],
+    effort: 'Baixo para medio',
+    blockers: [
+      'Dependencia de revisao juridica final.',
+      'Necessidade de manter os documentos vivos e sincronizados.',
+      'Risco reputacional se publicar algo que o contrato nao sustenta.',
+    ],
     steps: [
       'Publicar Politica de Privacidade, DPA, Politica de IA e lista de subprocessadores em rota publica clara.',
       'Adicionar pagina de seguranca com contatos de suporte, privacidade e incidente.',

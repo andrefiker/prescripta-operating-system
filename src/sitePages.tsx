@@ -1074,9 +1074,27 @@ function CompetitorCategoryCard({ category }: { category: CompetitorCategory }) 
 function BuildPathwayCard({ pathway }: { pathway: BuildPathway }) {
   return (
     <article className="sheet">
-      <p className="eyebrow">Horizon {pathway.horizon}</p>
+      <p className="eyebrow">Roadmap executavel</p>
       <h3>{pathway.gap}</h3>
       <p>{pathway.why}</p>
+      <div className="pathway-meta">
+        <span>Ordem: {pathway.order}</span>
+        <span>Esforco: {pathway.effort}</span>
+        <span>Horizonte: {pathway.horizon}</span>
+      </div>
+      <p className="eyebrow">Dependencias</p>
+      <ul>
+        {pathway.dependencies.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      <p className="eyebrow">Empecilhos</p>
+      <ul>
+        {pathway.blockers.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      <p className="eyebrow">Instrucoes de desenvolvimento</p>
       <ol>
         {pathway.steps.map((step) => (
           <li key={step}>{step}</li>
