@@ -1,5 +1,6 @@
 export type RouteKey =
   | 'home'
+  | 'concorrentes'
   | 'comercial'
   | 'compliance'
   | 'documentos'
@@ -51,8 +52,23 @@ export type DeliverableAsset = {
   files: DeliverableFile[]
 }
 
+export type CompetitorCategory = {
+  title: string
+  intro: string
+  features: string[]
+  marketSignals?: string[]
+}
+
+export type BuildPathway = {
+  gap: string
+  why: string
+  horizon: string
+  steps: string[]
+}
+
 export const navItems: NavItem[] = [
   { key: 'home', label: 'Overview', kicker: 'Tese e fase' },
+  { key: 'concorrentes', label: 'Concorrentes', kicker: 'Gaps e pathways' },
   { key: 'comercial', label: 'Comercial', kicker: 'ICP, pricing e vendas' },
   { key: 'compliance', label: 'Compliance', kicker: 'Juridico, trust e risco' },
   { key: 'documentos', label: 'Documentos', kicker: 'Templates quase finais' },
@@ -669,6 +685,242 @@ export const deliverableAssets: DeliverableAsset[] = [
     files: [
       { label: 'PDF', path: './documents/homepage-copy.pdf' },
       { label: 'Markdown', path: './documents/homepage-copy.md' },
+    ],
+  },
+]
+
+export const competitorCategories: CompetitorCategory[] = [
+  {
+    title: 'Agenda e agendamento',
+    intro: 'Essa camada e commodity de mercado. Sem ela, o sistema parece incompleto para consultorio e clinica.',
+    features: [
+      'Agenda medica com status em tempo real: aguardando, em atendimento e nao compareceu.',
+      'Agendamento online 24h com link publico para o paciente marcar sozinho.',
+      'Lista de espera automatica.',
+      'Agendamento recorrente.',
+      'Sincronizacao com Google Calendar e Apple Calendar.',
+      'Bloqueio de horarios, ferias e indisponibilidade.',
+      'Multiplos profissionais e unidades na mesma agenda.',
+    ],
+  },
+  {
+    title: 'Comunicacao com paciente',
+    intro: 'Aqui mora uma grande parte da promessa de reducao de no-show e reativacao de base.',
+    features: [
+      'Lembrete de consulta por WhatsApp automatico.',
+      'Confirmacao de consulta por WhatsApp com resposta alterando status na agenda.',
+      'Lembrete por SMS.',
+      'Lembrete por e-mail.',
+      'E-mail de aniversariantes.',
+      'Sequencias de retorno e reativacao.',
+      'Campanhas de e-mail marketing.',
+      'Pesquisa de satisfacao pos-consulta.',
+      'Chat interno entre recepcao e medico.',
+      'Portal do paciente com acesso a receitas, prontuario e documentos.',
+    ],
+  },
+  {
+    title: 'Prescricao',
+    intro: 'Esse bloco decide percepcao de maturidade clinica e aderencia regulatoria do produto.',
+    features: [
+      'Integracao Memed com banco de medicamentos, interacoes e envio por QR Code.',
+      'Assinatura digital ICP-Brasil com validade juridica.',
+      'Envio de receita por WhatsApp ou e-mail direto ao paciente.',
+      'Modelos salvos de prescricao.',
+      'Prescricao de controle especial e notificacao de receita.',
+      'Solicitacao de exames digitalmente.',
+    ],
+  },
+  {
+    title: 'Prontuario',
+    intro: 'Aqui a disputa sai do operacional puro e entra em profundidade clinica e conveniencia de uso.',
+    features: [
+      'Prontuario personalizavel por especialidade com campos livres e formularios customizados.',
+      'Historico longitudinal com linha do tempo do paciente.',
+      'Calculadoras clinicas integradas.',
+      'Escalas psiquiatricas validadas no prontuario: PHQ-9, GAD-7, PANSS e Y-BOCS.',
+      'Anexo de arquivos, exames e fotos.',
+      'Compartilhamento de prontuario com outros profissionais.',
+      'Transcricao de consulta por IA.',
+      'Copilot de IA durante consulta.',
+    ],
+    marketSignals: [
+      'Feegow ja empurra IA com o Feegow IA.',
+      'Amplimed ja empurra transcricao e copilot com a camada Amelia.',
+      'TribeMD tem vantagem potencial em escalas psiquiatricas especializadas.',
+    ],
+  },
+  {
+    title: 'Teleconsulta',
+    intro: 'Teleconsulta ja e expectativa basica, nao diferencial premium.',
+    features: [
+      'Videochamada integrada ao prontuario sem sair do sistema.',
+      'Compartilhamento de tela durante consulta.',
+      'Gravacao da teleconsulta.',
+      'Termo de consentimento para teleconsulta.',
+      'Agendamento online de teleconsulta pelo paciente.',
+    ],
+  },
+  {
+    title: 'Financeiro',
+    intro: 'Para clinicas e operacoes mistas, essa camada entra cedo no processo de compra.',
+    features: [
+      'Controle de recebimentos e despesas.',
+      'Fluxo de caixa.',
+      'Repasse financeiro para multiplos profissionais.',
+      'Controle de estoque.',
+      'Faturamento TISS com TUSS, guias e glosas.',
+      'Parcelamento de procedimentos.',
+      'Orcamentos para pacientes.',
+      'Emissao de recibo e NF-e integrada.',
+      'Relatorios financeiros detalhados.',
+    ],
+  },
+  {
+    title: 'Infraestrutura e compliance',
+    intro: 'Essa camada reduz objecao juridica e de TI, especialmente em contas maiores.',
+    features: [
+      'Certificacao SBIS / CFM.',
+      'Infraestrutura em nuvem com criptografia SSL.',
+      'Politica de privacidade e LGPD documentada e publica.',
+      'App mobile nativo para iOS e Android.',
+      'API publica para integracoes externas.',
+      'Suporte tecnico com SLA por chat, telefone e e-mail.',
+      'Central de ajuda e base de conhecimento.',
+      'Migracao de dados assistida de outro sistema.',
+      'Trial gratuito.',
+    ],
+    marketSignals: [
+      'Feegow usa a certificacao SBIS NGS2 como sinal de maturidade.',
+      'Privacidade publica, suporte formal e trial gratuito sao heuristicas de compra ja esperadas.',
+    ],
+  },
+  {
+    title: 'Conteudo e ecossistema',
+    intro: 'Os players maduros constroem canal e distribuicao junto com o produto.',
+    features: [
+      'Blog e conteudo educativo.',
+      'Materiais para download como guias e e-books.',
+      'Cursos ou formacao integrada.',
+      'Integracao com plataforma publica de agendamento para descoberta de pacientes.',
+    ],
+    marketSignals: [
+      'iClinic herda musculatura de conteudo via Afya.',
+      'TribeMD acopla educacao via BIPP.',
+      'iClinic ainda ganha distribuicao com o AgendarConsulta.',
+    ],
+  },
+]
+
+export const competitorCriticalGaps: BuildPathway[] = [
+  {
+    gap: 'Assinatura digital ICP-Brasil',
+    why: 'Bloqueador regulatorio direto para receituario valido e para qualquer ambicao com controlados.',
+    horizon: '90 a 150 dias',
+    steps: [
+      'Definir se a Prescripta vai integrar um provedor existente de assinatura qualificada ou operar apenas como orquestradora do fluxo.',
+      'Modelar casos de uso: receita comum, receita de controle especial, termo e laudo.',
+      'Implementar assinatura com trilha de auditoria, carimbo de tempo e armazenamento do artefato assinado.',
+      'Criar validacao juridica com advogado e plano de rollout restrito antes de abrir publicamente.',
+    ],
+  },
+  {
+    gap: 'Integracao Memed',
+    why: 'Expectativa clara de mercado; sem isso a camada de prescricao parece incompleta para o comprador.',
+    horizon: '30 a 60 dias',
+    steps: [
+      'Abrir parceria tecnica e comercial com a Memed e confirmar requisitos de acesso a API.',
+      'Mapear exatamente onde a Memed entra no fluxo Prescripta sem virar prontuario completo.',
+      'Implementar prescricao assistida com selecao de medicamento, dosagem e entrega ao paciente.',
+      'Testar com psiquiatras de alta recorrencia para garantir que o fluxo fica mais rapido do que o improviso atual.',
+    ],
+  },
+  {
+    gap: 'Teleconsulta integrada',
+    why: 'Ja virou commodity e reduz objecao de compra para consultorios e operacoes hibridas.',
+    horizon: '45 a 90 dias',
+    steps: [
+      'Comecar por integracao com provedor de video white-label em vez de construir stack propria.',
+      'Acoplar a sala de teleconsulta ao contexto do paciente e ao evento de agenda.',
+      'Adicionar consentimento, registro de inicio/fim e links seguros por consulta.',
+      'Deixar gravacao e recursos avancados para fase 2, depois de validar aderencia real.',
+    ],
+  },
+  {
+    gap: 'Lembrete e confirmacao por WhatsApp',
+    why: 'E o argumento comercial mais facil de entender para reducao de no-show e ganho operacional.',
+    horizon: '30 a 60 dias',
+    steps: [
+      'Fechar provedor oficial da API do WhatsApp Business e definir custo por mensagem.',
+      'Modelar templates para lembrete, confirmacao, retorno e follow-up de ausencia.',
+      'Conectar resposta do paciente a mudancas objetivas de status na agenda e no fluxo operacional.',
+      'Construir opt-in, trilha de auditoria e controle de janelas de envio para nao virar spam operacional.',
+    ],
+  },
+  {
+    gap: 'Agendamento online publico',
+    why: 'Permite aquisicao e conveniencia 24h sem depender da recepcao para tudo.',
+    horizon: '45 a 75 dias',
+    steps: [
+      'Subir pagina publica por profissional com slots disponiveis e regras simples de elegibilidade.',
+      'Conectar slots a agenda principal com bloqueios, buffers e tipos de consulta.',
+      'Adicionar confirmacao automatica e remarcacao basica.',
+      'Liberar primeiro para solo e consultorio pequeno antes de tentar casos com multiplas unidades.',
+    ],
+  },
+  {
+    gap: 'Controle financeiro basico',
+    why: 'Fluxo de caixa, recibo e repasse entram cedo na conversa com clinicas.',
+    horizon: '60 a 120 dias',
+    steps: [
+      'Comecar com recebimentos, despesas, caixa e emissao simples de recibo.',
+      'Separar claramente o que e financeiro interno da clinica do que e faturamento medico por atendimento.',
+      'Adicionar repasse por profissional e conciliacao simples apenas depois da camada base estabilizar.',
+      'Integrar NF-e e cobranca somente quando houver uso real suficiente para justificar complexidade fiscal.',
+    ],
+  },
+  {
+    gap: 'Faturamento TISS',
+    why: 'Necessario para capturar clinicas e operacoes com convenio; sem isso parte do mercado fica fora.',
+    horizon: '120 a 180 dias',
+    steps: [
+      'Validar se esse bloco e essencial para o ICP de curto prazo ou se deve ficar fora da fase 1.',
+      'Mapear operadoras, guias, eventos e glosas mais frequentes em psiquiatria privada.',
+      'Construir modulo separado do core de recorrencia, para nao contaminar o wedge principal.',
+      'Entrar com piloto restrito em uma operacao com convenio antes de produto generalista.',
+    ],
+  },
+  {
+    gap: 'Escalas psiquiatricas no prontuario',
+    why: 'Pode virar diferencial real de especialidade, especialmente onde os generalistas ainda sao fracos.',
+    horizon: '30 a 75 dias',
+    steps: [
+      'Priorizar um pacote inicial: PHQ-9, GAD-7, Y-BOCS e PANSS ou equivalentes mais frequentes no ICP.',
+      'Modelar aplicacao, historico longitudinal e visualizacao de evolucao por paciente.',
+      'Permitir preenchimento pelo paciente e revisao pelo medico quando fizer sentido.',
+      'Conectar resultado da escala ao contexto da consulta, sem transformar a Prescripta em prontuario generico.',
+    ],
+  },
+  {
+    gap: 'Trial gratuito ou piloto com entrada muito baixa',
+    why: 'Ausencia de trial adiciona friccao de aquisicao quando a categoria ainda precisa ser explicada.',
+    horizon: '15 a 30 dias',
+    steps: [
+      'Decidir se o modelo sera trial aberto curto, trial guiado ou piloto pago descontavel na conversao.',
+      'Limitar escopo do trial para preservar valor e evitar treinar o mercado para gratuidade permanente.',
+      'Instrumentar ativacao, tempo ate valor e motivos de abandono desde o primeiro dia.',
+      'Publicar regra clara no site para nao misturar beta com gratis indefinido.',
+    ],
+  },
+  {
+    gap: 'Politica LGPD publica e trust center minimo',
+    why: 'Sem isso o comprador serio trava antes de assinatura ou diligencia simples.',
+    horizon: '7 a 21 dias',
+    steps: [
+      'Publicar Politica de Privacidade, DPA, Politica de IA e lista de subprocessadores em rota publica clara.',
+      'Adicionar pagina de seguranca com contatos de suporte, privacidade e incidente.',
+      'Garantir consistencia total entre site, proposta, contrato e materiais comerciais.',
+      'Manter changelog simples de atualizacao documental para passar mais confianca em deals reais.',
     ],
   },
 ]

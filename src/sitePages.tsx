@@ -6,6 +6,8 @@ import {
   clauseBlocks,
   complianceMatrix,
   compliancePanels,
+  competitorCategories,
+  competitorCriticalGaps,
   crmFields,
   csMetrics,
   deliverableAssets,
@@ -36,6 +38,8 @@ import {
   targetAccounts,
   thesisPanels,
   trustChecklist,
+  type BuildPathway,
+  type CompetitorCategory,
   type Offer,
   type PanelData,
   type RouteKey,
@@ -47,6 +51,8 @@ export function renderRoute(
   setProfile: Dispatch<SetStateAction<CompanyProfile>>,
 ) {
   switch (route) {
+    case 'concorrentes':
+      return <CompetitorsPage />
     case 'comercial':
       return <CommercialPage profile={profile} />
     case 'compliance':
@@ -142,6 +148,62 @@ function HomePage({ profile }: { profile: CompanyProfile }) {
               ))}
             </ul>
           </article>
+        ))}
+      </div>
+    </PageFrame>
+  )
+}
+
+function CompetitorsPage() {
+  return (
+    <PageFrame
+      kicker="Concorrentes"
+      title="Mapa competitivo da categoria e pathways de desenvolvimento para o que ainda falta na Prescripta."
+      intro="Esta aba consolida o inventario funcional da categoria e traduz os gaps mais criticos em backlog acionavel. O objetivo nao e copiar tudo. E decidir o que precisa existir para vender, implantar e defender a narrativa do produto."
+    >
+      <section className="profile-banner">
+        <div>
+          <p className="eyebrow">Leitura executiva</p>
+          <h3>O mercado ja trata agenda, teleconsulta, WhatsApp e prescricao digital como baseline.</h3>
+          <p>
+            A vantagem da Prescripta continua em recorrencia prescricional e operacao psiquiatrica. O risco e parecer
+            estreita demais antes de fechar os blocos minimos que o comprador ja espera ver.
+          </p>
+        </div>
+        <div className="profile-banner-meta">
+          <span>Gaps criticos: ICP-Brasil, Memed, teleconsulta e WhatsApp</span>
+          <span>Aposta assimetrica: escalas psiquiatricas no fluxo clinico</span>
+        </div>
+      </section>
+
+      <section className="note-band compact">
+        <p className="eyebrow">Top 10 gaps</p>
+        <h3>
+          ICP-Brasil, Memed, teleconsulta, WhatsApp, agendamento online, financeiro basico, TISS, escalas
+          psiquiatricas, trial e trust center publico.
+        </h3>
+        <p>Esses itens concentram o maior impacto em compra, ativacao, maturidade percebida e risco regulatorio.</p>
+      </section>
+
+      <SectionTitle
+        eyebrow="Mapa competitivo"
+        title="Inventario por categoria funcional."
+        text="Cada bloco abaixo resume o que a categoria ja considera normal ou valioso. Os sinais de mercado ajudam a separar commodity, diferenciador e item que pode ficar para depois."
+      />
+      <div className="panel-grid two">
+        {competitorCategories.map((category) => (
+          <CompetitorCategoryCard key={category.title} category={category} />
+        ))}
+      </div>
+
+      <SectionTitle
+        eyebrow="Pathways"
+        title="Como construir os gaps que mais influenciam decisao de compra."
+        text="Os pathways abaixo tratam cada gap como um programa de produto. A logica e destravar o minimo vendavel de cada bloco sem dissolver o wedge central da Prescripta."
+      />
+      <div className="panel-grid two">
+        {competitorCriticalGaps.map((pathway) => (
+          <BuildPathwayCard key={pathway.gap} pathway={pathway} />
         ))}
       </div>
     </PageFrame>
@@ -981,6 +1043,45 @@ function InsightPanel({ panel }: { panel: PanelData }) {
           <li key={bullet}>{bullet}</li>
         ))}
       </ul>
+    </article>
+  )
+}
+
+function CompetitorCategoryCard({ category }: { category: CompetitorCategory }) {
+  return (
+    <article className="insight-panel">
+      <h3>{category.title}</h3>
+      <p>{category.intro}</p>
+      <ul>
+        {category.features.map((feature) => (
+          <li key={feature}>{feature}</li>
+        ))}
+      </ul>
+      {category.marketSignals?.length ? (
+        <>
+          <p className="eyebrow">Sinais de mercado</p>
+          <ul>
+            {category.marketSignals.map((signal) => (
+              <li key={signal}>{signal}</li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+    </article>
+  )
+}
+
+function BuildPathwayCard({ pathway }: { pathway: BuildPathway }) {
+  return (
+    <article className="sheet">
+      <p className="eyebrow">Horizon {pathway.horizon}</p>
+      <h3>{pathway.gap}</h3>
+      <p>{pathway.why}</p>
+      <ol>
+        {pathway.steps.map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
     </article>
   )
 }
