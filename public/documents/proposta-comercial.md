@@ -24,6 +24,8 @@ A Prescripta será contratada como plataforma SaaS para estruturar a rotina oper
 recorrentes, incluindo configuração inicial, treinamento e suporte conforme o plano escolhido.
 O serviço não substitui decisão clínica nem promete cobertura regulatória fora do escopo
 expressamente contratado.
+Composição da equipe
+A Prescripta foi fundada por psicólogo clínico e psiquiatra, com equipe de desenvolvimento especializada em healthtech. O produto nasce da operação real de psiquiatria privada e é implementado com foco em fluxo, governança e ativação, não como software médico genérico.
 Funcionalidades incluídas
 -  Painel de términos previstos com visão consolidada por paciente.
 -  Alertas automáticos de vencimento, retorno e renovação.

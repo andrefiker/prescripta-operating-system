@@ -15,6 +15,7 @@ const routeDescriptions: Record<RouteKey, string> = {
   concorrentes: 'Mapa competitivo da Prescripta com gaps de mercado e caminhos de desenvolvimento.',
   comercial: 'ICP, pricing, oferta e motion comercial da Prescripta.',
   compliance: 'Compliance, trust center, risco regulatorio e materiais juridicos da Prescripta.',
+  trust: 'Trust Center publico da Prescripta com privacidade, seguranca, IA e documentos-base.',
   documentos: 'Biblioteca documental e workspace editavel da Prescripta.',
   onboarding: 'Onboarding, implantacao e ativacao de clientes da Prescripta.',
   publico: 'Narrativa publica, homepage, pricing e trust center da Prescripta.',

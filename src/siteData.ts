@@ -3,6 +3,7 @@ export type RouteKey =
   | 'concorrentes'
   | 'comercial'
   | 'compliance'
+  | 'trust'
   | 'documentos'
   | 'onboarding'
   | 'publico'
@@ -75,6 +76,7 @@ export const navItems: NavItem[] = [
   { key: 'concorrentes', label: 'Concorrentes', kicker: 'Gaps e pathways' },
   { key: 'comercial', label: 'Comercial', kicker: 'ICP, pricing e vendas' },
   { key: 'compliance', label: 'Compliance', kicker: 'Juridico, trust e risco' },
+  { key: 'trust', label: 'Trust Center', kicker: 'Pagina publica de confianca' },
   { key: 'documentos', label: 'Documentos', kicker: 'Templates quase finais' },
   { key: 'onboarding', label: 'Onboarding', kicker: 'Implantacao e CS' },
   { key: 'publico', label: 'Site Publico', kicker: 'Versao apresentavel e GTM' },
@@ -328,6 +330,50 @@ export const trustChecklist = [
   'Lista de subprocessadores publicada.',
   'Politica de IA explicando revisao humana e limites.',
   'Pagina de seguranca com canais de suporte e incidente.',
+]
+
+export const trustCenterSections: PanelData[] = [
+  {
+    title: 'Visao geral de seguranca',
+    intro: 'Seguranca precisa aparecer como operacao concreta, nao como promessa abstrata de software.',
+    bullets: [
+      'Criptografia em transito e em repouso para dados clinicos e operacionais.',
+      'Controle de acesso por perfil, logs e trilha de auditoria.',
+      'Backups periodicos, monitoramento e plano documentado de incidente.',
+    ],
+  },
+  {
+    title: 'Privacidade e LGPD',
+    intro: 'A pagina publica precisa explicar papel, contato e retencao sem juridiquês vazio.',
+    bullets: [
+      'Cliente como controlador e Prescripta como operadora no contexto do fluxo contratado.',
+      'Solicitacoes via privacidade@prescripta.com.br e base contratual alinhada ao DPA.',
+      'Retencao operacional durante o contrato + 30 dias para exportacao.',
+    ],
+  },
+  {
+    title: 'IA com supervisao humana',
+    intro: 'A camada de IA precisa reduzir medo e deixar limites claros logo de saida.',
+    bullets: [
+      'A IA prepara contexto, mas nao diagnostica, nao prescreve e nao decide sozinha.',
+      'Toda saida relevante exige revisao humana antes de produzir efeito.',
+      'Dados de clientes nao devem ser usados para treino fora da politica publicada.',
+    ],
+  },
+]
+
+export const trustCenterSubprocessors = [
+  ['[MOCK] Provedor de hospedagem', 'Infraestrutura e armazenamento', '[Validar pais/regiao real]'],
+  ['[MOCK] Provedor de IA', 'Processamento de linguagem e apoio operacional', '[Validar pais/regiao real]'],
+  ['[MOCK] Gateway de pagamento', 'Cobranca e processamento financeiro', '[Validar pais/regiao real]'],
+  ['[MOCK] Provedor de e-mail', 'Envio de notificacoes e alertas', '[Validar pais/regiao real]'],
+]
+
+export const trustCenterRetention = [
+  ['Dados cadastrais do usuario', 'Duracao do contrato + 5 anos', 'Obrigacoes fiscais e defesa juridica'],
+  ['Dados operacionais de pacientes', 'Duracao do contrato + 30 dias', 'Portabilidade e exportacao'],
+  ['Logs de acesso', '6 meses', 'Marco Civil da Internet'],
+  ['Dados de pagamento', '5 anos', 'Legislacao fiscal'],
 ]
 
 export const complianceMatrix = [
@@ -668,6 +714,24 @@ export const deliverableAssets: DeliverableAsset[] = [
       { label: 'PDF', path: './documents/trust-center-content.pdf' },
       { label: 'Markdown', path: './documents/trust-center-content.md' },
     ],
+  },
+  {
+    tier: 'Tier 2',
+    title: 'Guia rapido | Medico',
+    summary: 'Guia de 1 pagina para rotina clinica, revisao e decisao dentro da Prescripta.',
+    files: [{ label: 'Markdown', path: './documents/guia-rapido-medico.md' }],
+  },
+  {
+    tier: 'Tier 2',
+    title: 'Guia rapido | Recepcao',
+    summary: 'Guia de 1 pagina para agenda, contato, pendencia e handoff operacional.',
+    files: [{ label: 'Markdown', path: './documents/guia-rapido-recepcao.md' }],
+  },
+  {
+    tier: 'Tier 2',
+    title: 'Guia rapido | Admin',
+    summary: 'Guia de 1 pagina para owner da conta, governanca, setup e monitoramento.',
+    files: [{ label: 'Markdown', path: './documents/guia-rapido-admin.md' }],
   },
   {
     tier: 'Tier 3',

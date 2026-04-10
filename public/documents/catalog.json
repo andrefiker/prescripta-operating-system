@@ -180,6 +180,42 @@
     ]
   },
   {
+    "key": "guia-rapido-medico",
+    "title": "Guia rapido | Medico",
+    "tier": "Tier 2",
+    "summary": "Guia de 1 pagina para rotina clinica e decisao dentro da Prescripta.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/guia-rapido-medico.md"
+      }
+    ]
+  },
+  {
+    "key": "guia-rapido-recepcao",
+    "title": "Guia rapido | Recepcao",
+    "tier": "Tier 2",
+    "summary": "Guia de 1 pagina para agenda, contato e pendencia operacional.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/guia-rapido-recepcao.md"
+      }
+    ]
+  },
+  {
+    "key": "guia-rapido-admin",
+    "title": "Guia rapido | Admin",
+    "tier": "Tier 2",
+    "summary": "Guia de 1 pagina para owner da conta, setup e monitoramento.",
+    "files": [
+      {
+        "label": "Markdown",
+        "path": "/documents/guia-rapido-admin.md"
+      }
+    ]
+  },
+  {
     "key": "crm-setup-spec",
     "title": "CRM setup spec",
     "tier": "Tier 3",

@@ -2,6 +2,8 @@ Trust Center
 Conteúdo pronto para publicação no site da Prescripta
 Este documento contém o texto final de cada seção do Trust Center, pronto para ser publicado em página pública no site da
 Prescripta.
+Nota de origem
+A Prescripta foi fundada por psicólogo clínico e psiquiatra, com equipe de desenvolvimento especializada em healthtech. A operação de segurança, privacidade e governança foi desenhada para sustentar uso real em psiquiatria privada, e não apenas uma demonstração comercial.
 Seção 1: Visão Geral de Segurança
 A Prescripta trata segurança como parte da operação, não como acessório. Toda a infraestrutura foi
 desenhada para proteger dados clínicos e operacionais com o rigor que o setor de saúde exige.

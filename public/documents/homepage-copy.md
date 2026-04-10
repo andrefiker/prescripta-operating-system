@@ -8,6 +8,7 @@ Seção 1: Hero
 confirmação para psiquiatria privada.
 [Body] Seu paciente não precisa ficar sem medicação porque ninguém lembrou do prazo. A Prescripta
 transforma o fluxo prescricional em rotina observável, com trilha de auditoria e contexto preparado.
+[Proofline] Fundada por psicólogo clínico e psiquiatra, com equipe de desenvolvimento especializada em healthtech.
 [CTA primário] Agendar demonstração
 [CTA secundário] Ver como funciona
 Seção 2: Problema

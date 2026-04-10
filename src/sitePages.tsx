@@ -37,6 +37,9 @@ import {
   stats,
   targetAccounts,
   thesisPanels,
+  trustCenterRetention,
+  trustCenterSections,
+  trustCenterSubprocessors,
   trustChecklist,
   type BuildPathway,
   type CompetitorCategory,
@@ -57,8 +60,10 @@ export function renderRoute(
       return <CommercialPage profile={profile} />
     case 'compliance':
       return <CompliancePage profile={profile} />
+    case 'trust':
+      return <TrustCenterPage profile={profile} />
     case 'documentos':
-      return <DocumentsPage profile={profile} setProfile={setProfile} />
+      return <DocumentsPage profile={profile} setProfile={setProfile} route={route} />
     case 'onboarding':
       return <OnboardingPage profile={profile} />
     case 'publico':
@@ -438,9 +443,129 @@ function CompliancePage({ profile }: { profile: CompanyProfile }) {
   )
 }
 
+function TrustCenterPage({ profile }: { profile: CompanyProfile }) {
+  return (
+    <PageFrame
+      kicker="Trust Center"
+      title="Pagina publica de confianca para privacidade, seguranca, IA e governanca."
+      intro="Esta e a camada publica minima para reduzir objecao juridica e de risco antes de proposta, contrato ou diligencia leve."
+      snapshots={[
+        { label: 'Base publica', value: 'Termos + Privacidade + DPA + IA' },
+        { label: 'Contato DPO', value: profile.dpoContact },
+        { label: 'Incidente', value: 'incidente@prescripta.com.br' },
+      ]}
+      quickNav={[
+        { id: 'trust-foundation', label: 'Fundamentos' },
+        { id: 'trust-subprocessors', label: 'Subprocessadores' },
+        { id: 'trust-links', label: 'Documentos' },
+      ]}
+    >
+      <section className="profile-banner">
+        <div>
+          <p className="eyebrow">Resumo executivo</p>
+          <h3>Trust center minimo, publico e coerente com a oferta real.</h3>
+          <p>
+            A Prescripta foi fundada por psicologo clinico e psiquiatra, com equipe de desenvolvimento especializada em
+            healthtech. Esta pagina mostra como privacidade, seguranca, IA e retencao sao governadas hoje, sem misturar
+            claim atual com roadmap regulatorio.
+          </p>
+        </div>
+        <div className="profile-banner-meta">
+          <span>Termos de Uso, Politica de Privacidade, DPA e Politica de IA publicados</span>
+          <span>Roadmap regulatorio de controlados e SNCR mantido como trilha separada</span>
+        </div>
+      </section>
+
+      <SectionBlock
+        id="trust-foundation"
+        eyebrow="Fundamentos"
+        title="Os pilares que precisam existir antes de qualquer promessa forte."
+        text="O comprador precisa entender como a Prescripta trata seguranca, privacidade, IA e retencao sem vasculhar o operating system inteiro."
+        visual={<MindMap center="Trust" nodes={['Seguranca', 'LGPD', 'IA', 'Retencao', 'Incidente']} />}
+      >
+        <div className="panel-grid three">
+          {trustCenterSections.map((panel) => (
+            <InsightPanel key={panel.title} panel={panel} />
+          ))}
+        </div>
+      </SectionBlock>
+
+      <div id="trust-subprocessors" className="split-layout">
+        <article className="sheet">
+          <p className="eyebrow">Subprocessadores</p>
+          <h3>Lista publicada com placeholders explicitos enquanto a camada final nao esta travada.</h3>
+          <div className="matrix">
+            <div className="matrix-row matrix-head">
+              <span>Fornecedor</span>
+              <span>Servico</span>
+              <span>Localizacao</span>
+            </div>
+            {trustCenterSubprocessors.map((row) => (
+              <div key={row[0]} className="matrix-row">
+                <span>{row[0]}</span>
+                <span>{row[1]}</span>
+                <span>{row[2]}</span>
+              </div>
+            ))}
+          </div>
+        </article>
+        <article className="sheet">
+          <p className="eyebrow">Retencao de dados</p>
+          <h3>Janela minima publicada para reduzir ambiguidade contratual.</h3>
+          <div className="matrix">
+            <div className="matrix-row matrix-head">
+              <span>Tipo</span>
+              <span>Prazo</span>
+              <span>Motivo</span>
+            </div>
+            {trustCenterRetention.map((row) => (
+              <div key={row[0]} className="matrix-row">
+                <span>{row[0]}</span>
+                <span>{row[1]}</span>
+                <span>{row[2]}</span>
+              </div>
+            ))}
+          </div>
+        </article>
+      </div>
+
+      <section id="trust-links" className="panel-grid two">
+        <article className="sheet">
+          <p className="eyebrow">Documentos publicos</p>
+          <h3>Pacote minimo para proposta, contrato e diligencia leve.</h3>
+          <div className="document-actions">
+            <a className="primary-button" href={resolveAssetPath('trust', './documents/termos-de-uso.pdf')} target="_blank" rel="noreferrer">
+              Termos de Uso
+            </a>
+            <a className="primary-button" href={resolveAssetPath('trust', './documents/politica-de-privacidade.pdf')} target="_blank" rel="noreferrer">
+              Politica de Privacidade
+            </a>
+            <a className="ghost-button" href={resolveAssetPath('trust', './documents/dpa.pdf')} target="_blank" rel="noreferrer">
+              DPA
+            </a>
+            <a className="ghost-button" href={resolveAssetPath('trust', './documents/politica-de-ia.pdf')} target="_blank" rel="noreferrer">
+              Politica de IA
+            </a>
+          </div>
+        </article>
+        <article className="sheet visual-sheet">
+          <p className="eyebrow">Pendencia explicita</p>
+          <h3>CNPJ e definicoes societarias ainda dependem de decisao do founder, nao de produto.</h3>
+          <p>
+            Enquanto essa decisao nao fecha, os documentos precisam manter placeholder explicito e coerente, em vez de
+            sugerir completude juridica falsa.
+          </p>
+          <p>Contatos publicos: {profile.dpoContact} | {profile.supportContact} | incidente@prescripta.com.br</p>
+        </article>
+      </section>
+    </PageFrame>
+  )
+}
+
 function DocumentsPage(props: {
   profile: CompanyProfile
   setProfile: Dispatch<SetStateAction<CompanyProfile>>
+  route: RouteKey
 }) {
   const importInputRef = useRef<HTMLInputElement | null>(null)
   const generatedDocuments = buildDocuments(props.profile)
@@ -474,16 +599,19 @@ function DocumentsPage(props: {
           title="Tier 1 | Nao vende sem isso"
           intro="Pacote juridico e comercial minimo para enviar proposta, fechar contrato e sustentar a narrativa da empresa."
           assets={tier1Assets}
+          route={props.route}
         />
         <TierSection
           title="Tier 2 | Onboarding dos primeiros clientes"
           intro="Materiais de implantacao, treinamento, discovery e trust para as primeiras contas pagas."
           assets={tier2Assets}
+          route={props.route}
         />
         <TierSection
           title="Tier 3 | Operacao de pipeline"
           intro="Especificacoes de CRM, projecao de receita, playbook de objecoes e copy de homepage para rodar o comercial."
           assets={tier3Assets}
+          route={props.route}
         />
       </div>
 
@@ -828,6 +956,7 @@ function PublicSitePage({ profile }: { profile: CompanyProfile }) {
             A homepage deve refletir o estagio real da empresa: {profile.companyStage}. O alvo principal continua sendo{' '}
             {profile.primaryIcp}.
           </p>
+          <p>Fundada por psicologo clinico e psiquiatra, com equipe de desenvolvimento especializada em healthtech.</p>
         </article>
         <article className="sheet">
           <p className="eyebrow">Claims que precisam bater</p>
@@ -1398,6 +1527,14 @@ function downloadProfileJson(profile: CompanyProfile) {
   URL.revokeObjectURL(url)
 }
 
+function resolveAssetPath(route: RouteKey, assetPath: string) {
+  if (!assetPath || !assetPath.startsWith('./')) {
+    return assetPath
+  }
+
+  return route === 'home' ? assetPath : assetPath.replace('./', '../')
+}
+
 async function importProfileJson(
   event: ChangeEvent<HTMLInputElement>,
   setProfile: Dispatch<SetStateAction<CompanyProfile>>,
@@ -1418,7 +1555,7 @@ async function importProfileJson(
   }
 }
 
-function TierSection(props: { title: string; intro: string; assets: typeof deliverableAssets }) {
+function TierSection(props: { title: string; intro: string; assets: typeof deliverableAssets; route: RouteKey }) {
   const [openPreview, setOpenPreview] = useState<string | null>(null)
   const [compactPreview, setCompactPreview] = useState(() =>
     typeof window !== 'undefined' ? window.matchMedia('(max-width: 900px)').matches : false,
@@ -1464,7 +1601,7 @@ function TierSection(props: { title: string; intro: string; assets: typeof deliv
                 <a
                   key={`${asset.title}-${file.label}`}
                   className={file.label === 'PDF' || file.label === 'DOCX' || file.label === 'XLSX' ? 'primary-button' : 'ghost-button'}
-                  href={file.path}
+                  href={resolveAssetPath(props.route, file.path)}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -1484,7 +1621,7 @@ function TierSection(props: { title: string; intro: string; assets: typeof deliv
                 ) : (
                   <iframe
                     title={`Preview ${asset.title}`}
-                    src={asset.files.find((file) => file.label === 'PDF')?.path}
+                    src={resolveAssetPath(props.route, asset.files.find((file) => file.label === 'PDF')?.path ?? '')}
                   />
                 )}
               </div>
