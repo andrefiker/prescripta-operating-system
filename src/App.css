@@ -289,6 +289,7 @@
 
 .sheet-head {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
   align-items: flex-start;
@@ -388,6 +389,13 @@
   border: 0;
   border-radius: 0.7rem;
   background: #f4ede3;
+}
+
+.pdf-preview-fallback {
+  padding: 1rem;
+  border-radius: 0.8rem;
+  background: rgba(17, 25, 31, 0.08);
+  color: var(--muted);
 }
 
 .generated-document {

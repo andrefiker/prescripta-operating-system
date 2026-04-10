@@ -1,4 +1,4 @@
-import { useState, type Dispatch, type ReactNode, type SetStateAction } from 'react'
+import { useEffect, useRef, useState, type ChangeEvent, type Dispatch, type ReactNode, type SetStateAction } from 'react'
 import { defaultCompanyProfile, type CompanyProfile } from './companyProfile'
 import { buildDocuments } from './documentGenerator'
 import {
@@ -318,6 +318,7 @@ function DocumentsPage(props: {
   profile: CompanyProfile
   setProfile: Dispatch<SetStateAction<CompanyProfile>>
 }) {
+  const importInputRef = useRef<HTMLInputElement | null>(null)
   const generatedDocuments = buildDocuments(props.profile)
   const tier1Assets = deliverableAssets.filter((asset) => asset.tier === 'Tier 1')
   const tier2Assets = deliverableAssets.filter((asset) => asset.tier === 'Tier 2')
@@ -367,6 +368,19 @@ function DocumentsPage(props: {
             <button type="button" className="ghost-button" onClick={() => props.setProfile(defaultCompanyProfile)}>
               Restaurar base
             </button>
+            <button type="button" className="ghost-button" onClick={() => downloadProfileJson(props.profile)}>
+              Exportar JSON
+            </button>
+            <button type="button" className="ghost-button" onClick={() => importInputRef.current?.click()}>
+              Importar JSON
+            </button>
+            <input
+              ref={importInputRef}
+              type="file"
+              accept="application/json"
+              hidden
+              onChange={(event) => importProfileJson(event, props.setProfile)}
+            />
           </div>
 
           <div className="form-grid">
@@ -1032,8 +1046,55 @@ function downloadText(fileName: string, content: string) {
   URL.revokeObjectURL(url)
 }
 
+function downloadProfileJson(profile: CompanyProfile) {
+  const blob = new Blob([JSON.stringify(profile, null, 2)], { type: 'application/json;charset=utf-8' })
+  const url = URL.createObjectURL(blob)
+  const anchor = document.createElement('a')
+  anchor.href = url
+  anchor.download = 'prescripta-company-profile.json'
+  anchor.click()
+  URL.revokeObjectURL(url)
+}
+
+async function importProfileJson(
+  event: ChangeEvent<HTMLInputElement>,
+  setProfile: Dispatch<SetStateAction<CompanyProfile>>,
+) {
+  const file = event.target.files?.[0]
+  if (!file) {
+    return
+  }
+
+  try {
+    const raw = await file.text()
+    const parsed = JSON.parse(raw) as Partial<CompanyProfile>
+    setProfile((current) => ({ ...current, ...parsed }))
+  } catch {
+    window.alert('Nao foi possivel importar o JSON do perfil.')
+  } finally {
+    event.target.value = ''
+  }
+}
+
 function TierSection(props: { title: string; intro: string; assets: typeof deliverableAssets }) {
   const [openPreview, setOpenPreview] = useState<string | null>(null)
+  const [compactPreview, setCompactPreview] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(max-width: 900px)').matches : false,
+  )
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    const query = window.matchMedia('(max-width: 900px)')
+    const sync = (matches: boolean) => setCompactPreview(matches)
+    sync(query.matches)
+
+    const onChange = (event: MediaQueryListEvent) => sync(event.matches)
+    query.addEventListener('change', onChange)
+    return () => query.removeEventListener('change', onChange)
+  }, [])
 
   return (
     <section className="tier-section">
@@ -1071,10 +1132,19 @@ function TierSection(props: { title: string; intro: string; assets: typeof deliv
             </div>
             {openPreview === asset.title ? (
               <div className="pdf-preview">
-                <iframe
-                  title={`Preview ${asset.title}`}
-                  src={asset.files.find((file) => file.label === 'PDF')?.path}
-                />
+                {compactPreview ? (
+                  <div className="pdf-preview-fallback">
+                    <p>
+                      Em telas menores ou browsers com restricao de embed, o preview inline pode falhar. Use o botao
+                      de PDF para abrir o arquivo diretamente.
+                    </p>
+                  </div>
+                ) : (
+                  <iframe
+                    title={`Preview ${asset.title}`}
+                    src={asset.files.find((file) => file.label === 'PDF')?.path}
+                  />
+                )}
               </div>
             ) : null}
           </article>
