@@ -7,7 +7,7 @@
     "dev": "vite",
     "generate:assets": "python scripts/generate_assets.py",
     "sync:editable": "python scripts/sync_editable_from_pdfs.py",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && tsx --tsconfig tsconfig.prerender.json scripts/prerender.tsx",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -25,6 +25,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
+    "tsx": "^4.20.6",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.0",
     "vite": "^8.0.4"
