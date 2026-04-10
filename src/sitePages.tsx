@@ -503,7 +503,11 @@ function TrustCenterPage({ profile }: { profile: CompanyProfile }) {
       <div id="trust-subprocessors" className="split-layout">
         <article className="sheet">
           <p className="eyebrow">Subprocessadores</p>
-          <h3>Lista publicada com placeholders explicitos enquanto a camada final nao esta travada.</h3>
+          <h3>Lista publica provisoria, com categorias operacionais ja declaradas e nomeacao final ainda em fechamento.</h3>
+          <p className="section-note">
+            A Prescripta publica desde ja as categorias de subprocessadores utilizadas na operacao. Os nomes comerciais e a localizacao final de dados
+            entram na versao nominal apos vendor review, fechamento contratual e consolidacao da arquitetura produtiva.
+          </p>
           <div className="matrix">
             <div className="matrix-row matrix-head">
               <span>Fornecedor</span>
@@ -560,10 +564,10 @@ function TrustCenterPage({ profile }: { profile: CompanyProfile }) {
         </article>
         <article className="sheet visual-sheet">
           <p className="eyebrow">Bloco juridico com pendencias fundacionais</p>
-          <h3>CNPJ, definicao societaria final e lista nominal de subprocessadores ainda nao estao fechados.</h3>
+          <h3>CNPJ e definicao societaria final ainda nao estao fechados; a lista de subprocessadores ja esta publicada em versao provisoria.</h3>
           <p>
-            Enquanto essas decisoes nao fecham, a camada juridica precisa manter placeholder explicito, explicar o que
-            ja esta valendo e evitar qualquer aparencia de completude falsa.
+            Enquanto essas decisoes nao fecham, a camada juridica precisa explicar o que ja esta valendo, declarar a lista
+            de subprocessadores por categoria operacional e reservar a nomeacao final de fornecedores para a etapa de vendor review.
           </p>
           <p>Contatos publicos: {profile.dpoContact} | {profile.supportContact} | incidente@prescripta.com.br</p>
         </article>

@@ -41,20 +41,21 @@ A lista abaixo será atualizada sempre que houver adição ou substituição. Al
 Subprocessador
 Serviço
 Localização dos dados
-[Provedor de hospedagem]
-Infraestrutura e armazenamento
-[País/Região]
-[Provedor de IA]
-Processamento de linguagem
-natural
-[País/Região]
-[Gateway de pagamento]
-Processamento de cobranças
-[País/Região]
-[Provedor de e-mail]
-Envio de notificações e alertas
-[País/Região]
+Infraestrutura e hospedagem
+Armazenamento, processamento, backup e observabilidade da plataforma
+Nomeação final em vendor review | região final a publicar
+Provedor de IA
+Processamento de linguagem natural e apoio operacional com supervisão humana
+Nomeação final em vendor review | região final a publicar
+Gateway de pagamento
+Processamento de cobranças, conciliação e trilha financeira
+Nomeação final em vendor review | região final a publicar
+Provedor de e-mail e notificações
+Envio de alertas operacionais, comunicações transacionais e suporte
+Nomeação final em vendor review | região final a publicar
 Cada subprocessador opera sob contrato com cláusulas de segurança e privacidade compatíveis com a LGPD.
+Esta é uma lista pública provisória por categoria operacional. A versão nominal final será atualizada após
+fechamento contratual dos fornecedores e consolidação da arquitetura produtiva.
 Seção 5: Retenção de Dados
 Tipo de dado
 Período de retenção

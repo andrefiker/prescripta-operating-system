@@ -363,10 +363,10 @@ export const trustCenterSections: PanelData[] = [
 ]
 
 export const trustCenterSubprocessors = [
-  ['[MOCK] Provedor de hospedagem', 'Infraestrutura e armazenamento', '[Validar pais/regiao real]'],
-  ['[MOCK] Provedor de IA', 'Processamento de linguagem e apoio operacional', '[Validar pais/regiao real]'],
-  ['[MOCK] Gateway de pagamento', 'Cobranca e processamento financeiro', '[Validar pais/regiao real]'],
-  ['[MOCK] Provedor de e-mail', 'Envio de notificacoes e alertas', '[Validar pais/regiao real]'],
+  ['Infraestrutura e hospedagem', 'Armazenamento, processamento, backup e observabilidade da plataforma', 'Nomeacao final em vendor review | regiao final a publicar'],
+  ['Provedor de IA', 'Processamento de linguagem e apoio operacional com supervisao humana', 'Nomeacao final em vendor review | regiao final a publicar'],
+  ['Gateway de pagamento', 'Cobranca, conciliacao e trilha financeira', 'Nomeacao final em vendor review | regiao final a publicar'],
+  ['Provedor de e-mail e notificacoes', 'Envio de alertas operacionais, comunicacoes transacionais e suporte', 'Nomeacao final em vendor review | regiao final a publicar'],
 ]
 
 export const trustCenterRetention = [
