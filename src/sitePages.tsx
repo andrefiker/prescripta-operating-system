@@ -839,6 +839,28 @@ function PublicSitePage({ profile }: { profile: CompanyProfile }) {
         </article>
       </section>
 
+      <div className="split-layout">
+        <article className="sheet">
+          <p className="eyebrow">Quem somos</p>
+          <h3>Origem clinica com execucao de produto especializada.</h3>
+          <p>
+            A Prescripta foi fundada por psicologo clinico e psiquiatra, com equipe de desenvolvimento especializada em
+            healthtech. A tese do produto nasce da dor real de continuidade de cuidado e da operacao recorrente em
+            psiquiatria privada.
+          </p>
+        </article>
+        <article className="sheet visual-sheet">
+          <p className="eyebrow">Confianca editorial</p>
+          <h3>Andrezza entra como co-criadora do produto, nao como cliente em depoimento.</h3>
+          <p>
+            "A Prescripta nasceu da dor real de continuidade de cuidado em psiquiatria privada. Eu participei da
+            construcao do fluxo para que a operacao ficasse utilizavel de verdade no dia a dia, e nao so bonita em
+            demo."
+          </p>
+          <p>Andrezza | co-criadora do produto</p>
+        </article>
+      </div>
+
       <SectionBlock
         id="public-stack"
         eyebrow="Pilha minima"

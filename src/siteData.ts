@@ -344,6 +344,7 @@ export const documentTemplates: TemplateBlock[] = [
     body: [
       'Headline: A camada operacional da recorrencia prescricional para psiquiatria privada.',
       'Subheadline: Menos improviso entre consulta e receita, com contexto, alerta e trilha operacional.',
+      'Linha de time: Fundada por psicologo clinico e psiquiatra, com equipe de desenvolvimento especializada em healthtech.',
       'Bloco de prova: termino previsto, renovacao observavel, equipe alinhada e menos retrabalho.',
       'Bloco de confianca: LGPD, supervisao humana, trilha de auditoria e direcao regulatoria.',
       'CTA: agendar demo ou piloto pago.',
@@ -366,6 +367,7 @@ export const documentTemplates: TemplateBlock[] = [
       'Quem opera renovacao hoje e em quais ferramentas.',
       'Onde o fluxo quebra: prazo, contexto, comunicacao ou revisao.',
       'Como o comprador mede valor.',
+      'Resposta pronta para "quem faz isso?": origem clinica + time especializado em healthtech.',
       'Que riscos travam a adocao.',
     ],
   },
@@ -513,6 +515,15 @@ export const publicBlueprint: PanelData[] = [
       'Pagina para psiquiatra solo focada em rotina, prazo e menos friccao.',
       'Pagina para clinica focada em fila, equipe, rastreabilidade e governanca.',
       'Pagina enterprise enxuta, com convite para discovery e due diligence.',
+    ],
+  },
+  {
+    title: 'Quem somos e origem do produto',
+    intro: 'A homepage precisa mostrar que a Prescripta tem origem clinica e composicao de equipe mais forte do que um projeto individual.',
+    bullets: [
+      'Linha minima de equipe: fundada por psicologo clinico e psiquiatra, com equipe de desenvolvimento especializada em healthtech.',
+      'Inserir Andrezza como co-criadora do produto na camada de confianca, nao como cliente.',
+      'Explicar que o fluxo nasceu da operacao real de psiquiatria privada e nao de uma tese genérica de software medico.',
     ],
   },
   {

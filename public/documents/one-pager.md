@@ -7,6 +7,8 @@ retrabalho administrativo e risco regulatório.
 A solução
 A Prescripta transforma término previsto, alerta, retorno, renovação e confirmação em um fluxo observável, com
 trilha de auditoria e supervisão humana em cada etapa.
+Time
+Fundada por psicólogo clínico e psiquiatra, com equipe de desenvolvimento especializada em healthtech.
 Para o psiquiatra
 Para a clínica
 Menos carga cognitiva. Contexto pronto antes da

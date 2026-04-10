@@ -42,7 +42,11 @@ Criptografia e controle de acesso. Dados protegidos em trânsito e em repouso. C
 apenas o que precisa.
 Trilha de auditoria. Tudo é registrado: quem fez, quando fez, o que mudou. Acessível para gestão e,
 se necessário, para regulatório.
+[Quote / confiança editorial] "A Prescripta nasceu da dor real de continuidade de cuidado em psiquiatria privada. Eu participei da construção do fluxo para que a operação ficasse utilizável de verdade no dia a dia, e não só bonita em demo." — Andrezza, co-criadora do produto
 [CTA] Acessar Trust Center
+Seção 4.1: Quem somos
+[H2] Quem está construindo a Prescripta
+[Body] A Prescripta foi fundada por psicólogo clínico e psiquiatra, com equipe de desenvolvimento especializada em healthtech. O produto nasce da prática clínica e da operação real, não de uma abstração genérica de software médico.
 Seção 5: Pricing
 [H2] Planos por perfil de operação
 Start Solo

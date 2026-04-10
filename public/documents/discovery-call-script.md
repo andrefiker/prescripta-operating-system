@@ -39,6 +39,9 @@ esquece, o que acontece?"
 -  "Tem alguma preocupação com LGPD, segurança de dados ou uso de IA?"
 -  "Quem mais precisa estar envolvido na decisão? Tem sócio, gestor ou jurídico?"
 -  "Tem algum prazo ou urgência específica?"
+Se perguntar "quem faz isso?"
+Resposta sugerida:
+"A Prescripta foi fundada por psicólogo clínico e psiquiatra, com equipe de desenvolvimento especializada em healthtech. A empresa nasceu para resolver esse fluxo de forma estreita, com profundidade operacional, sem virar um prontuário genérico. Então não é um projeto de uma pessoa só nem uma tese abstrata de software médico — é uma operação construída a partir de dor clínica real."
 6. Fechamento e Próximo Passo (3 min)
 Se qualificado:
 "Pelo que você descreveu, parece que a Prescripta encaixa bem. O próximo passo seria uma demo de 30 minutos
